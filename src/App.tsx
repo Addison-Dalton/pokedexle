@@ -3,7 +3,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 
 import { store } from './store';
 import GameApp from './scenes/app';
-import { theme } from './theme';
+import theme from './theme';
 
 
 function App() {

@@ -1,12 +1,10 @@
-import { extendTheme } from '@chakra-ui/react';
-
-export const theme = extendTheme({
+const styles = {
   colors: {
     primary: '#ffcb05',
     secondary: '#003a70'
   },
   fonts: {
-    body: 'Roboto, sans-serif',
+    body: 'Roboto, sans-serif'
   },
   fontSizes: {
     xs: '0.75rem',
@@ -92,6 +90,8 @@ export const theme = extendTheme({
     64: '16rem',
     72: '18rem',
     80: '20rem',
-    96: '24rem',
-  },
-});
+    96: '24rem'
+  }
+};
+
+export default styles;
