@@ -1,38 +1,52 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
-import styled from '@emotion/styled'
-import { Heading, Box, FormControl, FormLabel, Input } from '@chakra-ui/react';
+import styled from '@emotion/styled';
+import {
+  Heading,
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  InputGroup,
+  InputRightElement
+} from '@chakra-ui/react';
 
-const StyledHeader = styled(Heading)`
-  margin-bottom: 1rem;
-`;
+import SearchResultList from './search-result-list';
+import { useForm } from './hooks';
+
+const SearchWrapper = styled(Box)``;
 
 const GameInput = () => {
- const [value, setValue] = useState<string>();
- const handleSubmit = (e: FormEvent) => {
-  e.preventDefault();
-  console.log('submitted', value);
- };
-
- const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-  setValue(e.target.value);
- };
- return (
-  <Box>
-   <StyledHeader>{'Poxedexle'}</StyledHeader>
-   <form onSubmit={handleSubmit}>
-    <FormControl>
-     <FormLabel htmlFor="search">
-      {'Start typing to search for a Pokemon'}
-     </FormLabel>
-     <Input
-      id="search"
-      placeholder="Try searching for Pikachu…"
-      onChange={handleChange}
-     />
-    </FormControl>
-   </form>
-  </Box>
- );
+  const { value, searchResults, handleChange, handleSubmit, handleSearchSelect } =
+    useForm();
+  return (
+    <Box>
+      <Heading marginBottom={4}>{'Pokedexle'}</Heading>
+      <form onSubmit={handleSubmit}>
+        <FormControl>
+          <FormLabel htmlFor="search">
+            {'Start typing to search for a Pokemon'}
+          </FormLabel>
+          <SearchWrapper>
+            <InputGroup>
+              <Input
+                id="search"
+                placeholder="Try searching for Pikachu…"
+                value={value}
+                onChange={handleChange}
+                autoComplete="off"
+              />
+              <InputRightElement width='4.5rem'>
+                <Button onClick={handleSubmit}>
+                  {'Submit'}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+            <SearchResultList list={searchResults} onResultSelect={handleSearchSelect} />
+          </SearchWrapper>
+        </FormControl>
+      </form>
+    </Box>
+  );
 };
 
 export default GameInput;

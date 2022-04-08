@@ -6,6 +6,10 @@ export const getPokemon = (id: number) => {
   return pokemon.find((p) => p.id === id);
 }
 
+export const getPokedex = () => {
+  return pokedex as Pokedex;
+}
+
 // for now, calls the pokedex to get the number of pokemon
 export const getRandomPokemon = () => {
   const { pokemon } = pokedex as Pokedex;
