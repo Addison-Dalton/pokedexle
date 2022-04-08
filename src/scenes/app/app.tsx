@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
-import { Text, Grid, Box, GridItem } from '@chakra-ui/react';
+import { Grid, Box, GridItem } from '@chakra-ui/react';
 
 import { setSolutionPokemon } from '../../services/game/slice';
 import { useAppDispatch } from '../../services/redux/hooks';
 import { getRandomPokemon } from '../../services/pokedex/utils';
 
+import Navbar from '../navbar';
 import GameInput from '../input';
 
 const App = () => {
@@ -16,15 +17,12 @@ const App = () => {
 
   return (
     <Box height="100%">
-      <Grid templateColumns="repeat(6, 1fr)">
-        <GridItem colSpan={1}>
-          <Text>{'Eventually some sidebar might go here'}</Text>
+      <Grid templateColumns="repeat(6, 1fr)" paddingTop={0}>
+        <GridItem colSpan={6}>
+          <Navbar />
         </GridItem>
-        <GridItem colSpan={3}>
+        <GridItem padding={10} colSpan={6}>
           <GameInput />
-        </GridItem>
-        <GridItem colSpan={2}>
-          <Text>{'Search guesses can go here'}</Text>
         </GridItem>
       </Grid>
     </Box>

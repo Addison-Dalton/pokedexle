@@ -1,12 +1,11 @@
-import { extendTheme } from '@chakra-ui/react';
+import { extendTheme, type Theme, type ThemeOverride } from '@chakra-ui/react';
 
 import styles from './styles';
+import config from './config';
 
-const overrides = {
-  styles,
-  components: {
-    // TODO - component style overrides
-  }
+const overrides: ThemeOverride = {
+  ...styles,
+  config,
 };
 
-export default extendTheme(overrides);
+export default extendTheme(overrides) as Theme;

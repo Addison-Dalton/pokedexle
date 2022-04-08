@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import {
-  Heading,
   Box,
   FormControl,
   FormLabel,
@@ -20,7 +19,6 @@ const GameInput = () => {
     useForm();
   return (
     <Box>
-      <Heading marginBottom={4}>{'Pokedexle'}</Heading>
       <form onSubmit={handleSubmit}>
         <FormControl>
           <FormLabel htmlFor="search">
