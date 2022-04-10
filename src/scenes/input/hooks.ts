@@ -15,7 +15,10 @@ export const useForm = () => {
   const [searchResults, setSearchResults] = useState<Pokemon[]>([]);
   const dispatch = useAppDispatch();
   const { pokemon } = getPokedex();
-  const fuse = useMemo(() => new Fuse(pokemon, { keys: ['name'] }), [pokemon]);
+  const fuse = useMemo(
+    () => new Fuse(pokemon, { keys: ['name'], threshold: 0.3 }),
+    [pokemon]
+  );
 
   const handleSubmit = useCallback(
     (e: FormEvent) => {
