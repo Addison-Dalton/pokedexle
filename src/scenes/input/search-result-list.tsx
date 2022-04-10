@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import styled from '@emotion/styled';
-import { UnorderedList, ListItem, Box, Button } from '@chakra-ui/react';
+import { UnorderedList, Box } from '@chakra-ui/react';
+
+import SearchListItem from './search-result-list-item';
 
 type Props = {
   list: Pokemon[];
@@ -22,10 +24,8 @@ const SearchResultList: FC<Props> = ({ list, onResultSelect }) => {
   return (
     <Wrapper>
       <StyledList spacing={1} listStyleType="none" marginInlineStart={0}>
-        {list.map((item) => (
-          <ListItem key={item.name}>
-            <Button width="100%" textTransform="capitalize" onClick={() => onResultSelect(item)}>{item.name}</Button>
-          </ListItem>
+        {list.map((pokemon) => (
+          <SearchListItem key={pokemon.name} pokemon={pokemon} onSelect={onResultSelect} />
         ))}
       </StyledList>
     </Wrapper>

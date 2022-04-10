@@ -18,7 +18,7 @@ const GameInput = () => {
   const { value, searchResults, handleChange, handleSubmit, handleSearchSelect } =
     useForm();
   return (
-    <Box>
+    <Box maxWidth="500px" margin="0 auto">
       <form onSubmit={handleSubmit}>
         <FormControl>
           <FormLabel htmlFor="search">
@@ -31,6 +31,7 @@ const GameInput = () => {
                 placeholder="Try searching for Pikachu…"
                 value={value}
                 onChange={handleChange}
+                textTransform="capitalize"
                 autoComplete="off"
               />
               <InputRightElement width='4.5rem'>

@@ -3,7 +3,7 @@ type Pokemon = {
   id: number;
   name: string;
   order: number;
-  types: string[];
+  types: PokemonTypes[];
   weight: number;
   evolutions: string[];
 };
