@@ -2,7 +2,7 @@
 import { FC, memo } from 'react';
 import { Box, Image, SkeletonCircle } from '@chakra-ui/react';
 
-import { getPokemonSpriteUrl } from '../../services/pokedex/utils';
+import { getPokemonSpriteUrl } from '../../services/game/utils';
 
 type Props = {
   pokemon: Pokemon;

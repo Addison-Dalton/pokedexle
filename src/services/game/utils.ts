@@ -45,6 +45,12 @@ export const getElimatedTypes = (
   return [...eliminatedTypes, ...incorrectGuessTypes];
 };
 
+// sprites served from: https://github.com/PokeAPI/sprites
+export const getPokemonSpriteUrl = (id: number) => {
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+};
+
+
 const getRangeValue = (
   previousGuessValue: number,
   guessValue: number,
@@ -55,3 +61,13 @@ const getRangeValue = (
 
   return Math[mathFunction](guessValue, previousGuessValue);
 };
+
+// used for displaying guessed pokemon metrics (height, width)
+export const getMetricRangeDisplay = (min: number, max: number, conversionFunc: (value: number) => string) => {
+  const displayMin = min === 0 ? '???' : conversionFunc(min);
+  const displayMax = max === 0 ? '???' : conversionFunc(max);
+  
+  if (displayMin === displayMax) return displayMin;
+
+  return `${displayMin} - ${displayMax}`;
+}

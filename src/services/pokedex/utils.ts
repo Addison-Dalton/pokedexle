@@ -35,8 +35,3 @@ export const convertWeight = (weight: number) => {
   const pounds = weight * HECTOGRAM_TO_POUND;
   return `${pounds.toFixed(2)} lbs`;
 };
-
-// sprites served from: https://github.com/PokeAPI/sprites
-export const getPokemonSpriteUrl = (id: number) => {
-  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
-};
