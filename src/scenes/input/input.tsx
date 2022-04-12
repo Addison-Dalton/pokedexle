@@ -28,10 +28,10 @@ const GameInput = () => {
             <InputGroup>
               <Input
                 id="search"
-                placeholder="Try searching for Pikachu…"
+                placeholder="Search by name or type…"
                 value={value}
                 onChange={handleChange}
-                textTransform="capitalize"
+                textTransform={value ? 'capitalize' : 'none'}
                 autoComplete="off"
               />
               <InputRightElement width='4.5rem'>

@@ -16,7 +16,7 @@ export const useForm = () => {
   const dispatch = useAppDispatch();
   const { pokemon } = getPokedex();
   const fuse = useMemo(
-    () => new Fuse(pokemon, { keys: ['name'], threshold: 0.3 }),
+    () => new Fuse(pokemon, { keys: ['name', 'types'], threshold: 0.3 }),
     [pokemon]
   );
 
