@@ -17,7 +17,7 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <Box height="100%">
+    <Box height="100vh">
       <Grid templateColumns="repeat(6, 1fr)" paddingTop={0}>
         <GridItem colSpan={6}>
           <Navbar />

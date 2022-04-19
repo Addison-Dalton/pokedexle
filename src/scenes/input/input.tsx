@@ -4,10 +4,10 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Button,
   InputGroup,
   InputRightElement
 } from '@chakra-ui/react';
+import { SearchIcon } from '@chakra-ui/icons';
 
 import SearchResultList from './search-result-list';
 import { useForm } from './hooks';
@@ -15,35 +15,31 @@ import { useForm } from './hooks';
 const SearchWrapper = styled(Box)``;
 
 const GameInput = () => {
-  const { value, searchResults, handleChange, handleSubmit, handleSearchSelect } =
-    useForm();
+  const { value, searchResults, handleChange, handleSearchSelect } = useForm();
   return (
     <Box margin="0 auto" paddingTop={5}>
-      <form onSubmit={handleSubmit}>
-        <FormControl>
-          <FormLabel htmlFor="search">
-            {'Start typing to search for a Pokemon'}
-          </FormLabel>
-          <SearchWrapper>
-            <InputGroup>
-              <Input
-                id="search"
-                placeholder="Search by name or type…"
-                value={value}
-                onChange={handleChange}
-                textTransform={value ? 'capitalize' : 'none'}
-                autoComplete="off"
-              />
-              <InputRightElement width='4.5rem'>
-                <Button onClick={handleSubmit}>
-                  {'Submit'}
-                </Button>
-              </InputRightElement>
-            </InputGroup>
-            <SearchResultList list={searchResults} onResultSelect={handleSearchSelect} />
-          </SearchWrapper>
-        </FormControl>
-      </form>
+      <FormControl>
+        <FormLabel htmlFor="search">
+          {'Start typing to search for a Pokemon'}
+        </FormLabel>
+        <SearchWrapper>
+          <InputGroup>
+            <Input
+              id="search"
+              placeholder="Search by name or type…"
+              value={value}
+              onChange={handleChange}
+              textTransform={value ? 'capitalize' : 'none'}
+              autoComplete="off"
+            />
+            <InputRightElement children={<SearchIcon />} />
+          </InputGroup>
+          <SearchResultList
+            list={searchResults}
+            onResultSelect={handleSearchSelect}
+          />
+        </SearchWrapper>
+      </FormControl>
     </Box>
   );
 };

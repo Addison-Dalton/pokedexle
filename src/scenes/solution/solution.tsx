@@ -33,7 +33,7 @@ const Solution = () => {
     >
       <SolutionSprite
         pokemon={solution}
-        size="25rem"
+        size="20rem"
         imgBlur={INITIAL_BLUR - (numberOfGuesses * BLUR_INTERVAL)}
       />
       <Flex
