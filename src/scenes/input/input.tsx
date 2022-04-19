@@ -18,7 +18,7 @@ const GameInput = () => {
   const { value, searchResults, handleChange, handleSubmit, handleSearchSelect } =
     useForm();
   return (
-    <Box maxWidth="500px" margin="0 auto">
+    <Box margin="0 auto" paddingTop={5}>
       <form onSubmit={handleSubmit}>
         <FormControl>
           <FormLabel htmlFor="search">

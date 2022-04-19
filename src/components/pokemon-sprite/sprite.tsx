@@ -7,13 +7,18 @@ import { getPokemonSpriteUrl } from '../../services/game/utils';
 type Props = {
   pokemon: Pokemon;
   size: string;
+  className?: string;
 };
 
-const Sprite: FC<Props> = ({ pokemon, size = 'sm' }) => {
+const Sprite: FC<Props> = ({ pokemon, size = 'sm', className }) => {
   const { id, name } = pokemon;
   return (
-    <Box boxSize={size}>
-      <Image src={getPokemonSpriteUrl(id)} alt={name} fallback={<SkeletonCircle size={size} />} />
+    <Box className={className} boxSize={size}>
+      <Image
+        src={getPokemonSpriteUrl(id)}
+        alt={name}
+        fallback={<SkeletonCircle size={size} />}
+      />
     </Box>
   );
 };
@@ -23,7 +28,8 @@ const MemoizedSprite = memo(
   (prevProps, nextProps) =>
     prevProps.pokemon.id === nextProps.pokemon.id &&
     prevProps.pokemon.name === nextProps.pokemon.name &&
-    prevProps.size === nextProps.size
+    prevProps.size === nextProps.size &&
+    prevProps.className === nextProps.className
 );
 
 export default MemoizedSprite;

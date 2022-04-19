@@ -10,6 +10,29 @@ export const getPokedex = () => {
   return pokedex as Pokedex;
 };
 
+export const getAllTypes = (): PokemonTypes[] => {
+  return [
+    'normal',
+    'fire',
+    'water',
+    'grass',
+    'electric',
+    'ice',
+    'fighting',
+    'poison',
+    'ground',
+    'flying',
+    'psychic',
+    'bug',
+    'rock',
+    'ghost',
+    'dark',
+    'dragon',
+    'steel',
+    'fairy'
+  ];
+};
+
 // for now, calls the pokedex to get the number of pokemon
 export const getRandomPokemon = () => {
   const { pokemon } = pokedex as Pokedex;

@@ -28,28 +28,22 @@ export const getRange = (
   };
 };
 
-export const getElimatedTypes = (
-  solutionTypes: string[],
-  guessTypes: string[],
-  eliminatedTypes: string[]
+export const getGuessedTypes = (
+  guessTypes: PokemonTypes[],
+  previousTypes: PokemonTypes[]
 ) => {
-  // filter out already eliminated types
+  // filter out already guessed types
   const filteredGuessTypes = guessTypes.filter(
-    (type) => !eliminatedTypes.includes(type)
+    (type) => !previousTypes.includes(type)
   );
-  // filter out any types that match the solution type
-  const incorrectGuessTypes = filteredGuessTypes.filter((type) => {
-    return !solutionTypes.includes(type);
-  });
 
-  return [...eliminatedTypes, ...incorrectGuessTypes];
+  return [...previousTypes, ...filteredGuessTypes];
 };
 
 // sprites served from: https://github.com/PokeAPI/sprites
 export const getPokemonSpriteUrl = (id: number) => {
   return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
 };
-
 
 const getRangeValue = (
   previousGuessValue: number,
@@ -63,11 +57,29 @@ const getRangeValue = (
 };
 
 // used for displaying guessed pokemon metrics (height, width)
-export const getMetricRangeDisplay = (min: number, max: number, conversionFunc: (value: number) => string) => {
+export const getMetricRangeDisplay = (
+  min: number,
+  max: number,
+  conversionFunc: (value: number) => string
+) => {
   const displayMin = min === 0 ? '???' : conversionFunc(min);
   const displayMax = max === 0 ? '???' : conversionFunc(max);
-  
+
   if (displayMin === displayMax) return displayMin;
 
   return `${displayMin} - ${displayMax}`;
-}
+};
+
+export const getTypeVariant = (
+  type: PokemonTypes,
+  guessedTypes: PokemonTypes[],
+  solutionTypes: PokemonTypes[]
+): TypeChipVariants => {
+  if (guessedTypes.includes(type)) {
+    if (solutionTypes.includes(type)) {
+      return 'solution';
+    }
+    return 'eliminated';
+  }
+  return 'standard';
+};

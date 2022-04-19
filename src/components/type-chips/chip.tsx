@@ -1,23 +1,37 @@
 import { FC, memo } from 'react';
-import { Box, Text } from '@chakra-ui/react';
+import styled from '@emotion/styled';
+import BaseChip from './base';
 
 type Props = {
   type: PokemonTypes;
+  variant?: TypeChipVariants;
+  className?: string;
 };
 
-const Chip: FC<Props> = ({ type }) => (
-  <Box
-    borderRadius="20px"
-    backgroundColor={type}
-    border={`1px solid`}
-    borderColor={`${type}Border`}
-    width={20}
-  >
-    <Text textAlign="center" textTransform="capitalize" color="white">
-      {type}
-    </Text>
-  </Box>
-);
+const EliminatedChip = styled(BaseChip)`
+  background-color: gray;
+  border-color: darkgray;
+  opacity: 0.5;
+  text-decoration: line-through;
+  box-shadow: 0px 0px 2px 3px #ff1100;
+`;
+
+const SolutionChip = styled(BaseChip)`
+  box-shadow: 0px 0px 2px 3px #3de129;
+`
+
+const Chip: FC<Props> = ({ type, variant = 'standard', className }) => {
+  switch (variant) {
+    case 'standard':
+      return <BaseChip type={type} className={className} />
+    case 'eliminated':
+      return <EliminatedChip type={type} className={className} />
+    case 'solution':
+      return <SolutionChip type={type} className={className} />
+    default:
+      return <BaseChip type={type} className={className} />
+  }
+};
 
 const MemoizedChip = memo(Chip);
 

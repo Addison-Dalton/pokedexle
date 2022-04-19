@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getRange, getElimatedTypes } from './utils';
+import { getRange, getGuessedTypes } from './utils';
 
 const initialGuesses: Guesses = {
-  eliminatedTypes: [],
+  guessedTypes: [],
   heightRange: { min: 0, max: 0 },
   weightRange: { min: 0, max: 0 },
   guessedPokemon: []
@@ -36,10 +36,9 @@ const gameSlice = createSlice({
       const { guesses, solution } = state;
       guesses.guessedPokemon.push(guessedPokemon);
 
-      guesses.eliminatedTypes = getElimatedTypes(
-        solution.types,
+      guesses.guessedTypes = getGuessedTypes(
         guessedPokemon.types,
-        state.guesses.eliminatedTypes
+        state.guesses.guessedTypes
       );
 
       guesses.heightRange = getRange(

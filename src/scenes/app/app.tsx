@@ -6,6 +6,7 @@ import { useAppDispatch } from '../../services/redux/hooks';
 import { getRandomPokemon } from '../../services/pokedex/utils';
 
 import Navbar from '../navbar';
+import Solution from '../solution';
 import GameInput from '../input';
 
 const App = () => {
@@ -22,7 +23,10 @@ const App = () => {
           <Navbar />
         </GridItem>
         <GridItem padding={10} colSpan={6}>
-          <GameInput />
+          <Box maxWidth="500px" margin="0 auto">
+            <Solution />
+            <GameInput />
+          </Box>
         </GridItem>
       </Grid>
     </Box>

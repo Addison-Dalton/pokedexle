@@ -8,8 +8,10 @@ type PokemonRange = {
   max: number;
 };
 
+type TypeChipVariants = 'standard' | 'eliminated' | 'solution';
+
 type Guesses = {
-  eliminatedTypes: string[];
+  guessedTypes: PokemonTypes[];
   weightRange: PokemonRange;
   heightRange: PokemonRange;
   guessedPokemon: Pokemon[];
