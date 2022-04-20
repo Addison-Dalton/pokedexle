@@ -1,8 +1,6 @@
-import styled from '@emotion/styled';
 import {
   Box,
   FormControl,
-  FormLabel,
   Input,
   InputGroup,
   InputRightElement
@@ -12,17 +10,13 @@ import { SearchIcon } from '@chakra-ui/icons';
 import SearchResultList from './search-result-list';
 import { useForm } from './hooks';
 
-const SearchWrapper = styled(Box)``;
 
 const GameInput = () => {
   const { value, searchResults, handleChange, handleSearchSelect } = useForm();
   return (
-    <Box margin="0 auto" paddingTop={5}>
+    <Box margin="0 auto" marginBottom={5} minWidth="380px" paddingTop={5}>
       <FormControl>
-        <FormLabel htmlFor="search">
-          {'Start typing to search for a Pokemon'}
-        </FormLabel>
-        <SearchWrapper>
+        <Box position="relative">
           <InputGroup>
             <Input
               id="search"
@@ -38,7 +32,7 @@ const GameInput = () => {
             list={searchResults}
             onResultSelect={handleSearchSelect}
           />
-        </SearchWrapper>
+        </Box>
       </FormControl>
     </Box>
   );

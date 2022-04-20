@@ -1,4 +1,5 @@
 import { FC, useCallback } from 'react';
+import styled from '@emotion/styled';
 import {
   Box,
   Flex,
@@ -20,9 +21,15 @@ type Props = {
 };
 
 const listItemDarkStyles: CSSObject = {
-  backgroundColor: 'whiteAlpha.200',
-  _hover: { backgroundColor: 'whiteAlpha.300' }
+  backgroundColor: 'gray.600',
+  _hover: { backgroundColor: 'gray.700' }
 };
+
+const StyledTypeChip = styled(TypeChip)`
+  margin: 0.3rem !important;
+  width: 4rem;
+  font-size: 0.8em;
+`;
 
 const SearchListItem: FC<Props> = ({ pokemon, onSelect }) => {
   const { hardMode } = useSearchListItem();
@@ -45,7 +52,7 @@ const SearchListItem: FC<Props> = ({ pokemon, onSelect }) => {
       {hardMode ? (
         <Heading
           as="h4"
-          size="md"
+          size="sm"
           textAlign="center"
           textTransform="capitalize"
         >
@@ -57,7 +64,7 @@ const SearchListItem: FC<Props> = ({ pokemon, onSelect }) => {
           <Box flexGrow={1} marginLeft={6}>
             <Heading
               as="h4"
-              size="md"
+              size="sm"
               textAlign="left"
               textTransform="capitalize"
             >
@@ -65,17 +72,17 @@ const SearchListItem: FC<Props> = ({ pokemon, onSelect }) => {
             </Heading>
             <HStack justifyContent="left" marginTop={2} marginBottom={2}>
               {types.map((type) => (
-                <TypeChip key={type} type={type} />
+                <StyledTypeChip key={type} type={type} />
               ))}
             </HStack>
             <HStack justifyContent="left" spacing={5}>
-              <Text textAlign="center">
+              <Text textAlign="center" fontSize="sm">
                 <Text as="span" fontWeight="bold">
                   {'Height: '}
                 </Text>
                 {convertHeight(height)}
               </Text>
-              <Text textAlign="center">
+              <Text textAlign="center" fontSize="sm">
                 <Text as="span" fontWeight="bold">
                   {'Weight: '}
                 </Text>

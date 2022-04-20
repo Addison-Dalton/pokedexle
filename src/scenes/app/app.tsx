@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Grid, Box, GridItem } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 import { setSolutionPokemon } from '../../services/game/slice';
 import { useAppDispatch } from '../../services/redux/hooks';
@@ -13,24 +13,16 @@ const App = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(setSolutionPokemon(getRandomPokemon()))
+    dispatch(setSolutionPokemon(getRandomPokemon()));
   }, [dispatch]);
 
   return (
-    <Box height="100vh">
-      <Grid templateColumns="repeat(6, 1fr)" paddingTop={0}>
-        <GridItem colSpan={6}>
-          <Navbar />
-        </GridItem>
-        <GridItem padding={10} colSpan={6}>
-          <Box maxWidth="500px" margin="0 auto">
-            <Solution />
-            <GameInput />
-          </Box>
-        </GridItem>
-      </Grid>
+    <Box minHeight="100%" height="100%" display="flex" flexDirection="column">
+      <Navbar />
+      <Solution />
+      <GameInput />
     </Box>
-  )
-}
+  );
+};
 
 export default App;
