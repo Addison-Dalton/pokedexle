@@ -24,7 +24,7 @@ const Solution = () => {
   const { solution, guessedTypes, numberOfGuesses, weightRange, heightRange } =
     useSolution();
   return (
-    <Box height="100%">
+    <Box height="100%" margin={3}>
       <Flex
         maxWidth="500px"
         margin="0 auto"

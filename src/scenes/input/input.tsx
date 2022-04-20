@@ -12,7 +12,7 @@ import { useForm } from './hooks';
 const GameInput = () => {
   const { value, searchResults, handleChange, handleSearchSelect } = useForm();
   return (
-    <Box margin="0 auto" marginBottom={5} minWidth={[380, 450]} paddingTop={5}>
+    <Box margin="0 auto" marginBottom={5} minWidth={['auto', 450]} paddingTop={5}>
       <Box position="relative">
         <InputGroup>
           <Input

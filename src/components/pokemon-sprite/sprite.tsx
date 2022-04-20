@@ -17,7 +17,7 @@ const Sprite: FC<Props> = ({ pokemon, size = 'sm', className }) => {
       <Image
         src={getPokemonSpriteUrl(id)}
         alt={name}
-        fallback={<SkeletonCircle size="sm" />}
+        fallback={<SkeletonCircle w={size} h={size} margin="0 auto" />}
       />
     </Box>
   );

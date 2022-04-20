@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { SettingsIcon } from '@chakra-ui/icons';
 
-import ModalBody from './modal-body'
+import ModalBody from './modal-body';
 
 const SettingsModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -19,9 +19,10 @@ const SettingsModal = () => {
       <IconButton aria-label="settings" onClick={onOpen}>
         <SettingsIcon />
       </IconButton>
-      <Modal onClose={onClose} size="md" isOpen={isOpen}>
+      {/* @ts-ignore */}
+      <Modal onClose={onClose} size={'sm'} isOpen={isOpen}>
         <ModalOverlay />
-        <ModalContent paddingBottom={5}>
+        <ModalContent paddingBottom={5} marginLeft={2} marginRight={2}>
           <ModalHeader textAlign="center">{'SETTINGS'}</ModalHeader>
           <ModalCloseButton />
           <ModalBody />
