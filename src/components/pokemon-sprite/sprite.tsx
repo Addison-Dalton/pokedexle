@@ -6,7 +6,7 @@ import { getPokemonSpriteUrl } from '../../services/game/utils';
 
 type Props = {
   pokemon: Pokemon;
-  size: string;
+  size: string | string[];
   className?: string;
 };
 
@@ -17,7 +17,7 @@ const Sprite: FC<Props> = ({ pokemon, size = 'sm', className }) => {
       <Image
         src={getPokemonSpriteUrl(id)}
         alt={name}
-        fallback={<SkeletonCircle size={size} />}
+        fallback={<SkeletonCircle size="sm" />}
       />
     </Box>
   );

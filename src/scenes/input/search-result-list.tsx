@@ -21,12 +21,17 @@ const Wrapper = styled(Box)`
 `;
 
 const SearchResultList: FC<Props> = ({ list, onResultSelect }) => {
-
   if (list.length === 0) return null;
 
   return (
     <Wrapper maxHeight={window.innerHeight - 100} overflowY="auto">
-      <UnorderedList spacing={1} listStyleType="none" marginInlineStart={0} backgroundColor="gray.800">
+      <UnorderedList
+        spacing={1}
+        listStyleType="none"
+        marginInlineStart={0}
+        backgroundColor="white"
+        _dark={{ backgroundColor: 'gray.800' }}
+      >
         {list.map((pokemon) => (
           <SearchListItem
             key={pokemon.name}
