@@ -1,11 +1,14 @@
-import { Box, Flex, HStack, Heading } from '@chakra-ui/react';
+import { Flex, HStack, Heading } from '@chakra-ui/react';
 
 import Settings from '../settings-modal';
+import IntroModal from '../intro-modal';
 
 const Navbar = () => {
   return (
     <Flex p={2} borderBottom="solid 1px darkgrey" marginBottom={5}>
-      <Box flex="1 1 0%">{'Empty space'}</Box>
+      <HStack flex="1 1 0%" spacing={10}>
+        <IntroModal />
+      </HStack>
       <Heading
         flex="1 1 0%"
         textAlign="center"
