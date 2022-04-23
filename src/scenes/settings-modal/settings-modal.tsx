@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { SettingsIcon } from '@chakra-ui/icons';
 
-import ModalBody from './modal-body';
+import ModalBody from './modal-content';
 
 const SettingsModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

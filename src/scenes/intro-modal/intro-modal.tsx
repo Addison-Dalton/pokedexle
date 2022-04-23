@@ -9,6 +9,7 @@ import {
 import { QuestionIcon } from '@chakra-ui/icons';
 
 import { useIntroModal } from './hooks';
+import ModalBody from './modal-content';
 
 const IntroModal = () => {
   const { isOpen, handleOpen, handleClose } = useIntroModal();
@@ -18,12 +19,12 @@ const IntroModal = () => {
       <IconButton aria-label="instructions" onClick={handleOpen}>
         <QuestionIcon />
       </IconButton>
-      <Modal onClose={handleClose} size="sm" isOpen={isOpen}>
+      <Modal onClose={handleClose} size="full" isOpen={isOpen}>
         <ModalOverlay />
-        <ModalContent paddingBottom={5} marginLeft={2} marginRight={2}>
+        <ModalContent paddingBottom={5}>
           <ModalHeader textAlign="center">{'HOW TO PLAY'}</ModalHeader>
           <ModalCloseButton />
-          <p>{'Eventually introduction instructions will go here'}</p>
+          <ModalBody />
         </ModalContent>
       </Modal>
     </>
