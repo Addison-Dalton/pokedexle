@@ -28,7 +28,12 @@ export const selectGuessedTypes = createSelector(
   (guesses) => guesses.guessedTypes
 );
 
-export const selectGameState = createSelector(
+export const selectGameProgress = createSelector(
   [getGameState],
-  (state) => state.gameState
+  (state) => state.gameProgress
+);
+
+export const selectGameSolved = createSelector(
+  [getGameState],
+  (state) => state.gameSolved
 );

@@ -1,16 +1,17 @@
-import {
-  Box,
-  Input,
-  InputGroup,
-  InputRightElement
-} from '@chakra-ui/react';
+import { Box, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 
 import SearchResultList from './search-result-list';
 import { useForm } from './hooks';
 
 const GameInput = () => {
-  const { value, searchResults, handleChange, handleSearchSelect } = useForm();
+  const {
+    value,
+    searchResults,
+    disableInput,
+    handleChange,
+    handleSearchSelect
+  } = useForm();
   return (
     <Box margin="0 auto" marginBottom={5} minWidth={[380, 450]} paddingTop={5}>
       <Box position="relative">
@@ -23,6 +24,7 @@ const GameInput = () => {
             onChange={handleChange}
             textTransform={value ? 'capitalize' : 'none'}
             autoComplete="off"
+            disabled={disableInput}
           />
           <InputRightElement children={<SearchIcon />} />
         </InputGroup>

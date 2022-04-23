@@ -20,7 +20,8 @@ const initialState: GameStore = {
     evolutions: []
   },
   guesses: initialGuesses,
-  gameState: getLocalStorage('hideIntro') ? 'game' : 'intro'
+  gameProgress: getLocalStorage('hideIntro') ? 'game' : 'intro',
+  gameSolved: false
 };
 
 const gameSlice = createSlice({
@@ -53,17 +54,23 @@ const gameSlice = createSlice({
         guesses.weightRange,
         guessedPokemon.weight
       );
+
+      // detect if the correct pokemon was guessed.
+      if (guessedPokemon.id === solution.id) {
+        state.gameProgress = 'end';
+        state.gameSolved = true;
+      }
     },
     resetGuesses(state) {
       state.guesses = initialGuesses;
     },
-    setGameState(state, action: PayloadAction<GameStates>) {
-      state.gameState = action.payload;
+    setGameProgress(state, action: PayloadAction<GameProgress>) {
+      state.gameProgress = action.payload;
     }
   }
 });
 
-export const { setSolutionPokemon, setGuess, resetGuesses, setGameState } =
+export const { setSolutionPokemon, setGuess, resetGuesses, setGameProgress } =
   gameSlice.actions;
 export * from './selectors';
 export default gameSlice.reducer;

@@ -1,7 +1,8 @@
 type GameStore = {
   solution: Pokemon;
   guesses: Guesses;
-  gameState: GameStates;
+  gameProgress: GameProgress;
+  gameSolved: boolean;
 };
 
 type PokemonRange = {
@@ -10,7 +11,7 @@ type PokemonRange = {
 };
 
 type TypeChipVariants = 'standard' | 'eliminated' | 'solution';
-type GameStates = 'intro' | 'game' | 'end';
+type GameProgress = 'intro' | 'game' | 'end';
 
 type Guesses = {
   guessedTypes: PokemonTypes[];
