@@ -19,7 +19,6 @@ const SettingsModal = () => {
       <IconButton aria-label="settings" onClick={onOpen}>
         <SettingsIcon />
       </IconButton>
-      {/* @ts-ignore */}
       <Modal onClose={onClose} size={'sm'} isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent paddingBottom={5} marginLeft={2} marginRight={2}>

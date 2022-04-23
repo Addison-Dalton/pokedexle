@@ -2,6 +2,7 @@ import { memo } from 'react';
 import styled from '@emotion/styled';
 import { Flex, Box, Text } from '@chakra-ui/react';
 
+import { ReactComponent as PokeballIcon } from '../../icons/pokeball.svg';
 import PokemonSprite from '../../components/pokemon-sprite';
 import Types from './types';
 
@@ -10,14 +11,22 @@ import { useSolution } from './hooks';
 const INITIAL_BLUR = 35;
 const BLUR_INTERVAL = 5;
 
-type StyledProps = {
+type StyledSpriteProps = {
   imgBlur: number;
 };
 
-const SolutionSprite = styled(PokemonSprite)<StyledProps>`
+type StyledPokeballProps = {
+  grayOut: boolean;
+};
+
+const SolutionSprite = styled(PokemonSprite)<StyledSpriteProps>`
   img {
     filter: ${(p) => `grayscale(1) blur(${p.imgBlur}px)`};
   }
+`;
+
+const StyledPokeballIcon = styled(PokeballIcon)<StyledPokeballProps>`
+  filter: ${(p) => (p.grayOut ? 'grayscale(1)' : 'none')};
 `;
 
 const Solution = () => {
@@ -35,6 +44,11 @@ const Solution = () => {
         borderRadius="6px"
         flexGrow={1}
       >
+        <Flex width="100%" padding={2} justifyContent="end" flexDirection="row-reverse">
+          {[...Array(6)].map((x, idx) => (
+            <StyledPokeballIcon grayOut={idx < numberOfGuesses} />
+          ))}
+        </Flex>
         <SolutionSprite
           pokemon={solution}
           size={['15em', '20em']}
