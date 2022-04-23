@@ -2,9 +2,9 @@ import { FC, memo } from 'react';
 import styled from '@emotion/styled';
 import { Flex, Heading, Text } from '@chakra-ui/react';
 
-import { convertHeight, convertWeight } from '../../../services/pokedex/utils';
-import PokemonSprite from '../../../components/pokemon-sprite';
-import TypeChip from '../../../components/type-chips';
+import { convertHeight, convertWeight } from '../../services/pokedex/utils';
+import PokemonSprite from '../pokemon-sprite';
+import TypeChip from '../type-chips';
 
 type Props = {
   guessedPokemon: Pokemon;

@@ -1,1 +1,1 @@
-export { default } from './pokeball-guess';
+export { default } from './pokeball-guesses';
