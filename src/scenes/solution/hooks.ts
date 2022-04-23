@@ -15,9 +15,8 @@ import { getMetricRangeDisplay } from '../../services/game/utils';
 
 const MAX_GUESSES = 6;
 
-export const useSolution = () => {
+export const usePokeballGuesses = () => {
   const dispatch = useAppDispatch();
-  const solution = useAppSelector(selectSolution);
   const guessedPokemon = useAppSelector(selectGuessedPokemon);
 
   useEffect(() => {
@@ -26,10 +25,7 @@ export const useSolution = () => {
     }
   }, [guessedPokemon.length, dispatch]);
 
-  return {
-    solution,
-    numberOfGuesses: guessedPokemon.length
-  };
+  return { guessedPokemon, MAX_GUESSES };
 };
 
 export const useSolutionGuessInfo = () => {

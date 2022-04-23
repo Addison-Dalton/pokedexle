@@ -1,23 +1,11 @@
 import { memo } from 'react';
-import styled from '@emotion/styled';
 import { Flex, Box } from '@chakra-ui/react';
 
-import { ReactComponent as PokeballIcon } from '../../icons/pokeball.svg';
+import PokeballGuesses from './pokeball-guess';
 import SolutionGuessInfo from './guess-info';
 import SolutionCorrectInfo from './solution-info';
 
-import { useSolution } from './hooks';
-
-type StyledProps = {
-  grayOut: boolean;
-};
-
-const StyledPokeballIcon = styled(PokeballIcon)<StyledProps>`
-  filter: ${(p) => (p.grayOut ? 'grayscale(1)' : 'none')};
-`;
-
 const Solution = () => {
-  const { numberOfGuesses } = useSolution();
   return (
     <Box height="100%" margin={3}>
       <Flex
@@ -31,16 +19,7 @@ const Solution = () => {
         borderRadius="6px"
         flexGrow={1}
       >
-        <Flex
-          width="100%"
-          padding-right={2}
-          justifyContent="end"
-          flexDirection="row-reverse"
-        >
-          {[...Array(6)].map((x, idx) => (
-            <StyledPokeballIcon grayOut={idx < numberOfGuesses} />
-          ))}
-        </Flex>
+        <PokeballGuesses />
         {/* GuessInfo will render initially, and until the gameProgress "ends"
             After which CorrectInfo will render, and show the solution results
         */}
