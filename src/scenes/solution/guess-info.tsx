@@ -6,8 +6,8 @@ import PokemonMetrics from '../../components/pokemon-metrics';
 import { useSolutionGuessInfo } from './hooks';
 import Types from './types';
 
-const INITIAL_BLUR = 35;
-const BLUR_INTERVAL = 5;
+const INITIAL_BLUR = 18;
+const BLUR_INTERVAL = 3;
 
 type StyledProps = {
   imgBlur: number;
