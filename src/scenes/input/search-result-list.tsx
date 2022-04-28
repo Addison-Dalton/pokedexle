@@ -6,6 +6,7 @@ import SearchListItem from './search-result-list-item';
 
 type Props = {
   list: Pokemon[];
+  showResults: boolean;
   onResultSelect: (value: Pokemon) => void;
 };
 
@@ -20,8 +21,8 @@ const Wrapper = styled(Box)`
   border-right: 1px solid;
 `;
 
-const SearchResultList: FC<Props> = ({ list, onResultSelect }) => {
-  if (list.length === 0) return null;
+const SearchResultList: FC<Props> = ({ list, showResults, onResultSelect }) => {
+  if (!showResults) return null;
 
   return (
     <Wrapper maxHeight={window.innerHeight - 100} overflowY="auto">

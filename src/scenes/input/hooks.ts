@@ -1,4 +1,11 @@
-import { ChangeEvent, useState, useCallback, useMemo, useEffect } from 'react';
+import {
+  ChangeEvent,
+  useState,
+  useCallback,
+  useMemo,
+  useEffect,
+  FocusEvent
+} from 'react';
 import Fuse from 'fuse.js';
 
 import { useAppDispatch, useAppSelector } from '../../services/redux/hooks';
@@ -6,10 +13,11 @@ import { setGuess, selectGameProgress } from '../../services/game/slice';
 import { getSetting } from '../../services/settings/slice';
 import { getPokedex } from '../../services/pokedex/utils';
 
-export const useForm = () => {
+export const useSearch = () => {
   const SEARCH_LIMIT = 6;
   const [searchValue, setSearchValue] = useState<string>('');
   const [searchResults, setSearchResults] = useState<Pokemon[]>([]);
+  const [showSearchResults, setShowSearchResults] = useState(false);
   const [disableInput, setDisableInput] = useState(false);
   const dispatch = useAppDispatch();
   const gameState = useAppSelector(selectGameProgress);
@@ -41,16 +49,41 @@ export const useForm = () => {
     [dispatch]
   );
 
+  const handleInputFocus = useCallback((e: FocusEvent<HTMLInputElement>) => {
+    e.target.select();
+  }, []);
+
   useEffect(() => {
     if (gameState === 'end') setDisableInput(true);
   }, [gameState]);
 
+  useEffect(() => {
+    const handleCloseSearch = (e: Event) => {
+      // @ts-ignore - complain id doesn't exist, while technically true that's what I'm checking
+      if (e.target.id !== 'pokemon-search-input') {
+        setShowSearchResults(false);
+      }
+    };
+
+    document.addEventListener('click', handleCloseSearch);
+
+    const unsub = () =>
+      document.removeEventListener('click', handleCloseSearch);
+    return unsub;
+  }, [searchResults]);
+
+  useEffect(() => {
+    setShowSearchResults(searchResults.length > 0);
+  }, [searchResults.length]);
+
   return {
     value: searchValue,
     searchResults,
+    showSearchResults,
     disableInput,
     handleChange,
-    handleSearchSelect
+    handleSearchSelect,
+    handleInputFocus
   };
 };
 

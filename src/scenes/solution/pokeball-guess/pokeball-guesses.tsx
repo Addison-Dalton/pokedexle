@@ -14,7 +14,7 @@ const PokeballGuesses = () => {
       flexDirection="row-reverse"
     >
       {[...Array(MAX_GUESSES)].map((x, idx) => (
-        <PokeballGuess guessedPokemon={guessedPokemon[idx]} />
+        <PokeballGuess key={`pokeball-${idx}`} guessedPokemon={guessedPokemon[idx]} />
       ))}
     </Flex>
   );
