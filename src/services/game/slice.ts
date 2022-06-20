@@ -6,6 +6,7 @@ const initialGuesses: Guesses = {
   guessedTypes: [],
   heightRange: { min: 0, max: 0 },
   weightRange: { min: 0, max: 0 },
+  genRange: { min: 0, max: 0 },
   guessedPokemon: []
 };
 
@@ -54,6 +55,11 @@ const gameSlice = createSlice({
         solution.weight,
         guesses.weightRange,
         guessedPokemon.weight
+      );
+      guesses.genRange = getRange(
+        solution.generation,
+        guesses.genRange,
+        guessedPokemon.generation
       );
 
       // detect if the correct pokemon was guessed.

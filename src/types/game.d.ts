@@ -17,6 +17,7 @@ type Guesses = {
   guessedTypes: PokemonTypes[];
   weightRange: PokemonRange;
   heightRange: PokemonRange;
+  genRange: PokemonRange;
   guessedPokemon: Pokemon[];
 };
 

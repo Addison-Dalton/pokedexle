@@ -58,3 +58,15 @@ export const convertWeight = (weight: number) => {
   const pounds = weight * HECTOGRAM_TO_POUND;
   return `${pounds.toFixed(2)} lbs`;
 };
+
+// only meant to be used with generation info, so keeping this pretty simple
+export const convertToRomanNumeral = (generation: number) => {
+  const numerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VII', 'IX', 'X'];
+  if (generation > numerals.length) return generation.toString();
+
+  // generation starts at 1, so minus by 1 to account for that
+  const numeral = numerals[generation - 1];
+  if (!numeral) return generation.toString();
+
+  return numeral;
+};

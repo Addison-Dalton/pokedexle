@@ -23,6 +23,11 @@ export const selectGuessedHeight = createSelector(
   (guesses) => guesses.heightRange
 );
 
+export const selectGuessedGeneration = createSelector(
+  [getGuesses],
+  (guesses) => guesses.genRange
+);
+
 export const selectGuessedTypes = createSelector(
   [getGuesses],
   (guesses) => guesses.guessedTypes

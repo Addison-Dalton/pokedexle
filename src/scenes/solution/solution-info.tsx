@@ -28,6 +28,7 @@ const SolutionInfo = () => {
     solution,
     displayWeight,
     displayHeight,
+    displayGen,
     numberOfGuesses
   } = useSolutionInfo();
 
@@ -42,7 +43,7 @@ const SolutionInfo = () => {
           <StyledTypeChip key={`${type}-${idx}`} type={type} />
         ))}
       </Flex>
-      <StyledPokemonMetrics height={displayHeight} weight={displayWeight} />
+      <StyledPokemonMetrics height={displayHeight} weight={displayWeight} gen={displayGen} />
       {gameSolved ? (
         <Text fontSize="lg" fontWeight="bold">
           {'Nicely done! You guessed '}

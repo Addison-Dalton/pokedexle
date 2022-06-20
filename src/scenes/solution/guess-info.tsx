@@ -26,6 +26,7 @@ const SolutionGuessInfo = () => {
     guessedTypes,
     heightRange,
     weightRange,
+    genRange,
     numberOfGuesses
   } = useSolutionGuessInfo();
 
@@ -38,7 +39,7 @@ const SolutionGuessInfo = () => {
         size={['15em', '20em']}
         imgBlur={INITIAL_BLUR - numberOfGuesses * BLUR_INTERVAL}
       />
-      <PokemonMetrics height={heightRange} weight={weightRange} />
+      <PokemonMetrics height={heightRange} weight={weightRange} gen={genRange} />
       <Types guessedTypes={guessedTypes} solutionTypes={solution.types} />
     </>
   );

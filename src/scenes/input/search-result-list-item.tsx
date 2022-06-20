@@ -10,7 +10,11 @@ import {
   CSSObject
 } from '@chakra-ui/react';
 
-import { convertHeight, convertWeight } from '../../services/pokedex/utils';
+import {
+  convertHeight,
+  convertWeight,
+  convertToRomanNumeral
+} from '../../services/pokedex/utils';
 import TypeChip from '../../components/type-chips';
 import PokemonSprite from '../../components/pokemon-sprite';
 import { useSearchListItem } from './hooks';
@@ -28,12 +32,12 @@ const listItemDarkStyles: CSSObject = {
 const StyledTypeChip = styled(TypeChip)`
   margin: 0.3rem !important;
   width: 4rem;
-  font-size: 0.8em;
+  font-size: 0.7em;
 `;
 
 const SearchListItem: FC<Props> = ({ pokemon, onSelect }) => {
   const { hardMode } = useSearchListItem();
-  const { name, types, height, weight } = pokemon;
+  const { name, types, height, weight, generation } = pokemon;
 
   const handleSelect = useCallback(
     () => onSelect(pokemon),
@@ -59,7 +63,7 @@ const SearchListItem: FC<Props> = ({ pokemon, onSelect }) => {
           {name}
         </Heading>
       ) : (
-        <Flex alignItems="center">
+        <Flex alignItems="center" position="relative">
           <PokemonSprite pokemon={pokemon} size="80px" />
           <Box flexGrow={1} marginLeft={6}>
             <Heading
@@ -89,6 +93,16 @@ const SearchListItem: FC<Props> = ({ pokemon, onSelect }) => {
                 {convertWeight(weight)}
               </Text>
             </HStack>
+            <Text
+              position="absolute"
+              top={0}
+              right={0}
+              textAlign="left"
+              as="span"
+              fontSize="sm"
+            >
+              {`Gen. ${convertToRomanNumeral(generation)}`}
+            </Text>
           </Box>
         </Flex>
       )}

@@ -10,6 +10,7 @@ const PokeballGuesses = () => {
     <Flex
       width="100%"
       padding-right={2}
+      marginBottom={5}
       justifyContent="end"
       flexDirection="row-reverse"
     >

@@ -8,9 +8,14 @@ import {
   selectGuessedTypes,
   selectGuessedPokemon,
   selectGameProgress,
-  selectGameSolved
+  selectGameSolved,
+  selectGuessedGeneration
 } from '../../services/game/slice';
-import { convertWeight, convertHeight } from '../../services/pokedex/utils';
+import {
+  convertWeight,
+  convertHeight,
+  convertToRomanNumeral
+} from '../../services/pokedex/utils';
 import { getMetricRangeDisplay } from '../../services/game/utils';
 
 const MAX_GUESSES = 6;
@@ -32,6 +37,7 @@ export const useSolutionGuessInfo = () => {
   const solution = useAppSelector(selectSolution);
   const guessedWeight = useAppSelector(selectGuessedWeight);
   const guessedHeight = useAppSelector(selectGuessedHeight);
+  const guessedGeneration = useAppSelector(selectGuessedGeneration);
   const guessedTypes = useAppSelector(selectGuessedTypes);
   const guessedPokemon = useAppSelector(selectGuessedPokemon);
   const gameProgress = useAppSelector(selectGameProgress);
@@ -50,6 +56,11 @@ export const useSolutionGuessInfo = () => {
       guessedHeight.min,
       guessedHeight.max,
       convertHeight
+    ),
+    genRange: getMetricRangeDisplay(
+      guessedGeneration.min,
+      guessedGeneration.max,
+      convertToRomanNumeral
     )
   };
 };
@@ -59,7 +70,7 @@ export const useSolutionInfo = () => {
   const gameProgress = useAppSelector(selectGameProgress);
   const gameSolved = useAppSelector(selectGameSolved);
   const guessedPokemon = useAppSelector(selectGuessedPokemon);
-  const { weight, height } = solution;
+  const { weight, height, generation } = solution;
 
   return {
     gameProgress,
@@ -67,6 +78,7 @@ export const useSolutionInfo = () => {
     solution,
     displayWeight: convertWeight(weight),
     displayHeight: convertHeight(height),
+    displayGen: convertToRomanNumeral(generation),
     numberOfGuesses: guessedPokemon.length
   };
 };

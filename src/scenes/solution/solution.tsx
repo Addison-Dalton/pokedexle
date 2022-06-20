@@ -7,16 +7,13 @@ import SolutionCorrectInfo from './solution-info';
 
 const Solution = () => {
   return (
-    <Box height="100%" margin={3}>
+    <Box height="100%" marginRight={3} marginLeft={3}>
       <Flex
         maxWidth="500px"
         margin="0 auto"
         padding={2}
         flexDirection="column"
         alignItems="center"
-        border="solid 2px"
-        borderColor="yellow.400"
-        borderRadius="6px"
         flexGrow={1}
       >
         <PokeballGuesses />
