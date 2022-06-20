@@ -16,13 +16,14 @@ const getPokemon = async (pokemons: any[]) => {
       const json = await response.json();
       return await parsePokemon(json);
     })
-  )
-}
+  );
+};
 
 const parsePokemon = async (pokemon: any) => {
   const types = pokemon.types.map((type: any) => type.type.name);
   const species = await callSpecies(pokemon.species.url);
   const evolutionChainUrl = species.evolution_chain.url;
+  const generation  = extractGenerationNumber(species.generation.url);
 
   // delete all values not desired
   delete pokemon.abilities;
@@ -40,22 +41,31 @@ const parsePokemon = async (pokemon: any) => {
   delete pokemon.stats;
 
   const evolutions = await callEvolutionChain(evolutionChainUrl);
-  
-  
-  return { ...pokemon, types, evolutions };
-}
 
-const callSpecies  = async (url: string) => {
+  return { ...pokemon, types, evolutions, generation };
+};
+
+const callSpecies = async (url: string) => {
   const response = await fetch(url);
   return await response.json();
-}
+};
 
 const callEvolutionChain = async (url: string) => {
   const response = await fetch(url);
   const json = await response.json();
 
   return parseEvolution(json.chain);
-}
+};
+
+// takes the pokemon species generation url and extracts the id from it
+const extractGenerationNumber = (generationUrl: string) => {
+  const regex = /generation\/(\d+)\//g;
+  const results = regex.exec(generationUrl);
+  if (!results || results.length === 0) {
+    return 0;
+  }
+  return parseInt(results[1], 10);
+};
 
 const parseEvolution = (evolutionChain: any, evolutions: any[] = []) => {
   // initialize array with evolutionChain first species name
@@ -67,11 +77,11 @@ const parseEvolution = (evolutionChain: any, evolutions: any[] = []) => {
   const { evolves_to: evolvesTo } = evolutionChain;
   if (evolvesTo) {
     evolvesTo.forEach((evolution: any) => {
-      evolutions.push(evolution.species.name)
+      evolutions.push(evolution.species.name);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       parseEvolution(evolution, evolutions);
     });
   }
 
   return evolutions;
-}
+};

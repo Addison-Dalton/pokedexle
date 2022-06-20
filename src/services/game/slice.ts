@@ -17,7 +17,8 @@ const initialState: GameStore = {
     name: '',
     order: -1,
     types: [],
-    evolutions: []
+    evolutions: [],
+    generation: 0
   },
   guesses: initialGuesses,
   gameProgress: getLocalStorage('hideIntro') ? 'game' : 'intro',

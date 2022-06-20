@@ -6,6 +6,7 @@ type Pokemon = {
   types: PokemonTypes[];
   weight: number;
   evolutions: string[];
+  generation: number;
 };
 
 type Pokedex = {
