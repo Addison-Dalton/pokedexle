@@ -15,7 +15,7 @@ const GameInput = () => {
     handleInputFocus
   } = useSearch();
   return (
-    <Box margin="0 auto" marginBottom={5} minWidth={[380, 450]} paddingTop={5}>
+    <Box margin="0 auto" marginBottom={5} minWidth={[340, 450]} paddingTop={5}>
       <Box position="relative">
         <InputGroup>
           <Input
