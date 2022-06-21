@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import {
   ModalBody,
   Flex,
@@ -10,8 +11,13 @@ import {
 
 import { getPokemon } from '../../services/pokedex/utils';
 import PokeballGuess from '../../components/pokeball-guess';
+import PlayButton from './play-button';
 
-const ModalContent = () => {
+type Props = {
+  onClose: VoidFunction;
+};
+
+const ModalContent: FC<Props> = ({ onClose }) => {
   const pikachu = getPokemon(25);
   return (
     <ModalBody>
@@ -43,6 +49,11 @@ const ModalContent = () => {
             </Flex>
           </ListItem>
         </OrderedList>
+        <Divider marginTop={2} marginBottom={8} />
+        <Heading size="sm" alignSelf="center" marginBottom={3}>
+          {'Click the Poké ball to play!'}
+        </Heading>
+        <PlayButton onClose={onClose} />
       </Flex>
     </ModalBody>
   );

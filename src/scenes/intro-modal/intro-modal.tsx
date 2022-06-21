@@ -24,7 +24,7 @@ const IntroModal = () => {
         <ModalContent paddingBottom={5}>
           <ModalHeader textAlign="center">{'HOW TO PLAY'}</ModalHeader>
           <ModalCloseButton />
-          <ModalBody />
+          <ModalBody onClose={handleClose} />
         </ModalContent>
       </Modal>
     </>
