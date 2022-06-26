@@ -50,7 +50,7 @@ const ModalContent: FC<Props> = ({ onClose }) => {
           </ListItem>
         </OrderedList>
         <Divider marginTop={2} marginBottom={8} />
-        <Heading size="sm" alignSelf="center" marginBottom={3}>
+        <Heading size="md" alignSelf="center" marginBottom={3}>
           {'Click the Poké ball to play!'}
         </Heading>
         <PlayButton onClose={onClose} />

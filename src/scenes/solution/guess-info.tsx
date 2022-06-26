@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { Flex } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 import PokemonSprite from '../../components/pokemon-sprite';
@@ -39,8 +40,10 @@ const SolutionGuessInfo = () => {
         size={['15em', '20em']}
         imgBlur={INITIAL_BLUR - numberOfGuesses * BLUR_INTERVAL}
       />
-      <PokemonMetrics height={heightRange} weight={weightRange} gen={genRange} />
-      <Types guessedTypes={guessedTypes} solutionTypes={solution.types} />
+      <Flex marginTop={8} flexDirection="column" alignItems="center" gap={3}>
+        <PokemonMetrics height={heightRange} weight={weightRange} gen={genRange} />
+        <Types guessedTypes={guessedTypes} solutionTypes={solution.types} />
+      </Flex>
     </>
   );
 };

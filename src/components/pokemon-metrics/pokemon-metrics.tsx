@@ -13,8 +13,6 @@ const PokemonMetrics: FC<Props> = ({ height, weight, gen, className }) => (
     width="100%"
     flexWrap="wrap"
     justifyContent="space-evenly"
-    marginTop={8}
-    marginBottom={2}
     gap={2}
     className={className}
   >
