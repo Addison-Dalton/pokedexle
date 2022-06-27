@@ -39,6 +39,7 @@ const SolutionGuessInfo = () => {
         pokemon={solution}
         size={['15em', '20em']}
         imgBlur={INITIAL_BLUR - numberOfGuesses * BLUR_INTERVAL}
+        overlayImage
       />
       <Flex marginTop={8} flexDirection="column" alignItems="center" gap={3}>
         <PokemonMetrics height={heightRange} weight={weightRange} gen={genRange} />

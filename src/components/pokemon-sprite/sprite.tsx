@@ -8,17 +8,27 @@ type Props = {
   pokemon: Pokemon;
   size: string | string[];
   className?: string;
+  overlayImage?: boolean;
 };
 
-const Sprite: FC<Props> = ({ pokemon, size = 'sm', className }) => {
+const Sprite: FC<Props> = ({
+  pokemon,
+  size = 'sm',
+  className,
+  overlayImage
+}) => {
   const { id, name } = pokemon;
   return (
-    <Box className={className} boxSize={size}>
+    <Box className={className} boxSize={size} position="relative">
       <Image
         src={getPokemonSpriteUrl(id)}
         alt={name}
         fallback={<SkeletonCircle w={size} h={size} margin="0 auto" />}
       />
+      {/* image overlay */}
+      {overlayImage && (
+        <Box position="absolute" top="0" left="0" boxSize={size} />
+      )}
     </Box>
   );
 };
