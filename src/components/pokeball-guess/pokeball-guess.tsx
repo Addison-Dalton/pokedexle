@@ -1,4 +1,4 @@
-import { FC, useState, useCallback, memo } from 'react';
+import { FC, useState, useCallback, memo, useEffect, MouseEvent } from 'react';
 import { Tooltip } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
@@ -15,19 +15,29 @@ const StyledPokeballIcon = styled(PokeballIcon)`
 
 const PokeballGuess: FC<Props> = ({ guessedPokemon }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [delayHandler, setDelayHandler] = useState<NodeJS.Timeout | null>(null);
 
+  const delayTimeout = useCallback(
+    () =>
+      setTimeout(() => {
+        setIsOpen(true);
+      }, 125),
+    []
+  );
   const handleMouseEnter = useCallback(() => {
-    setTimeout(() => {
-      setIsOpen(true);
-    }, 125);
-  }, []);
+    setDelayHandler(delayTimeout);
+  }, [delayTimeout]);
   const handleMouseLeave = useCallback(() => {
+    if (delayHandler) {
+      clearTimeout(delayHandler);
+    }
     setIsOpen(false);
-  }, []);
+  }, [delayHandler]);
 
   const handleClick = useCallback(() => {
     setIsOpen(!isOpen);
   }, [isOpen]);
+
   if (!guessedPokemon) return <PokeballIcon />;
 
   return (
