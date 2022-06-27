@@ -25,7 +25,7 @@ const SearchResultList: FC<Props> = ({ list, showResults, onResultSelect }) => {
   if (!showResults) return null;
 
   return (
-    <Wrapper maxHeight={window.innerHeight - 100} overflowY="auto">
+    <Wrapper id="pokemon-search-results" maxHeight={window.innerHeight - 100} overflowY="auto">
       <UnorderedList
         spacing={1}
         listStyleType="none"

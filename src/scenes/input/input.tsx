@@ -20,6 +20,9 @@ const GameInput = () => {
         <InputGroup>
           <Input
             id="pokemon-search-input"
+            type="search"
+            role="combobox"
+            dir="ltr"
             backgroundColor="white"
             _dark={{ backgroundColor: 'gray.800' }}
             placeholder="Search by name or type…"
@@ -28,7 +31,14 @@ const GameInput = () => {
             onFocus={handleInputFocus}
             textTransform={value ? 'capitalize' : 'none'}
             autoComplete="off"
+            autoCorrect="off"
+            spellCheck={false}
             disabled={disableInput}
+            aria-controls="pokemon-search-results"
+            aria-autocomplete="both"
+            aria-owns="pokemon-search-results"
+            aria-haspopup="true"
+            aria-expanded={showSearchResults}
           />
           <InputRightElement children={<SearchIcon />} />
         </InputGroup>
