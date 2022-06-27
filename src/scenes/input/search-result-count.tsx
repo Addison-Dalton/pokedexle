@@ -1,10 +1,9 @@
 import { FC } from 'react';
 import { Box, Text, CSSObject } from '@chakra-ui/react';
 
-import { SEARCH_LIMIT } from './search-result-list';
-
 type Props = {
-  resultsCount: number;
+  currentResultCount: number;
+  totalResultCount: number;
   searchTerm: string;
 };
 
@@ -16,7 +15,11 @@ const textDarkStyles: CSSObject = {
   color: 'gray.400'
 };
 
-const SearchResultsCount: FC<Props> = ({ resultsCount, searchTerm }) => (
+const SearchResultsCount: FC<Props> = ({
+  currentResultCount,
+  totalResultCount,
+  searchTerm
+}) => (
   <Box
     width="100%"
     paddingRight={2}
@@ -30,7 +33,7 @@ const SearchResultsCount: FC<Props> = ({ resultsCount, searchTerm }) => (
       fontSize="xs"
       color="gray.500"
       _dark={textDarkStyles}
-    >{`Showing ${SEARCH_LIMIT} of ${resultsCount} Pokémon for "${searchTerm}"`}</Text>
+    >{`Showing ${currentResultCount} of ${totalResultCount} Pokémon for "${searchTerm}"`}</Text>
   </Box>
 );
 

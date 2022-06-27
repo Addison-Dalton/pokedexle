@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 import styled from '@emotion/styled';
 import { UnorderedList, Box } from '@chakra-ui/react';
 
 import SearchListItem from './search-result-list-item';
 import SearchResultCount from './search-result-count';
 
-export const SEARCH_LIMIT = 6;
+const SEARCH_LIMIT = 6;
 
 type Props = {
   list: Pokemon[];
@@ -27,7 +27,14 @@ const Wrapper = styled(Box)`
   border-right: 1px solid;
 `;
 
-const SearchResultList: FC<Props> = ({ list, showResults, searchTerm, onResultSelect }) => {
+const SearchResultList: FC<Props> = ({
+  list,
+  showResults,
+  searchTerm,
+  onResultSelect
+}) => {
+  const limitedList = useMemo(() => list.slice(0, SEARCH_LIMIT), [list]);
+
   if (!showResults) return null;
 
   return (
@@ -42,7 +49,7 @@ const SearchResultList: FC<Props> = ({ list, showResults, searchTerm, onResultSe
           backgroundColor="white"
           _dark={{ backgroundColor: 'gray.800' }}
         >
-          {list.slice(0, SEARCH_LIMIT).map((pokemon) => (
+          {limitedList.map((pokemon) => (
             <SearchListItem
               key={pokemon.name}
               pokemon={pokemon}
@@ -51,7 +58,11 @@ const SearchResultList: FC<Props> = ({ list, showResults, searchTerm, onResultSe
           ))}
         </UnorderedList>
       </Box>
-      <SearchResultCount resultsCount={list.length} searchTerm={searchTerm} />
+      <SearchResultCount
+        currentResultCount={limitedList.length}
+        totalResultCount={list.length}
+        searchTerm={searchTerm}
+      />
     </Wrapper>
   );
 };
