@@ -5,7 +5,7 @@ import IntroModal from '../intro-modal';
 
 const Navbar = () => {
   return (
-    <Flex p={2} borderBottom="solid 1px darkgrey" marginBottom={1}>
+    <Flex p={2} borderBottom="solid 1px darkgrey" marginBottom={1} width="100%">
       <HStack flex="1 1 0%" spacing={10}>
         <IntroModal />
       </HStack>

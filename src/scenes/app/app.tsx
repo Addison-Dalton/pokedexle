@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Box } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 
 import { setSolutionPokemon } from '../../services/game/slice';
 import { useAppDispatch } from '../../services/redux/hooks';
@@ -17,11 +17,19 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <Box minHeight="100%" height="100%" display="flex" flexDirection="column">
+    <Flex minHeight="100%" height="100%" alignItems="center" flexDirection="column">
       <Navbar />
-      <Solution />
-      <GameInput />
-    </Box>
+      <Flex
+        height="100%"
+        marginRight={3}
+        marginLeft={3}
+        maxWidth="500px"
+        flexDirection="column"
+      >
+        <Solution />
+        <GameInput />
+      </Flex>
+    </Flex>
   );
 };
 
