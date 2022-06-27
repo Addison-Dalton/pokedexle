@@ -1,4 +1,4 @@
-import { FC, useState, useCallback, memo, useEffect, MouseEvent } from 'react';
+import { FC, useState, useCallback, memo } from 'react';
 import { Tooltip } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
