@@ -14,7 +14,6 @@ import { getSetting } from '../../services/settings/slice';
 import { getPokedex } from '../../services/pokedex/utils';
 
 export const useSearch = () => {
-  const SEARCH_LIMIT = 6;
   const [searchValue, setSearchValue] = useState<string>('');
   const [searchResults, setSearchResults] = useState<Pokemon[]>([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
@@ -33,7 +32,7 @@ export const useSearch = () => {
       setSearchValue(searchValue);
 
       const results = fuse
-        .search(searchValue, { limit: SEARCH_LIMIT })
+        .search(searchValue)
         .map((r) => r.item);
       setSearchResults(results);
     },

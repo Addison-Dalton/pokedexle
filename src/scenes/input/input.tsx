@@ -15,7 +15,7 @@ const GameInput = () => {
     handleInputFocus
   } = useSearch();
   return (
-    <Box margin="0 auto" marginBottom={5} minWidth={[340, 450]} paddingTop={5}>
+    <Box margin="0 auto" marginBottom={4} minWidth={[340, 450]} paddingTop={5}>
       <Box position="relative">
         <InputGroup>
           <Input
@@ -44,6 +44,7 @@ const GameInput = () => {
         </InputGroup>
         <SearchResultList
           list={searchResults}
+          searchTerm={value}
           showResults={showSearchResults}
           onResultSelect={handleSearchSelect}
         />
