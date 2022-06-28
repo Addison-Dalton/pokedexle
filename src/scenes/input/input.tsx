@@ -9,11 +9,14 @@ const GameInput = () => {
     value,
     searchResults,
     showSearchResults,
-    disableInput,
+    gameState,
     handleChange,
     handleSearchSelect,
     handleInputFocus
   } = useSearch();
+
+  if (gameState === 'end') return null;
+
   return (
     <Box margin="0 auto" marginBottom={4} minWidth={[340, 450]} paddingTop={5}>
       <Box position="relative">
@@ -33,7 +36,6 @@ const GameInput = () => {
             autoComplete="off"
             autoCorrect="off"
             spellCheck={false}
-            disabled={disableInput}
             aria-controls="pokemon-search-results"
             aria-autocomplete="both"
             aria-owns="pokemon-search-results"

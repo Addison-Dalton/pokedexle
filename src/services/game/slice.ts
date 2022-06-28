@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getLocalStorage } from '../../services/local-storage';
 import { getRange, getGuessedTypes } from './utils';
+import { getRandomPokemon } from '../pokedex/utils';
 
 const initialGuesses: Guesses = {
   guessedTypes: [],
@@ -68,8 +69,12 @@ const gameSlice = createSlice({
         state.gameSolved = true;
       }
     },
-    resetGuesses(state) {
-      state.guesses = initialGuesses;
+    resetGame(state) {
+      const newPokemon = getRandomPokemon();
+      if (newPokemon) {
+        return {...initialState, solution: newPokemon };
+      }
+      return state;
     },
     setGameProgress(state, action: PayloadAction<GameProgress>) {
       state.gameProgress = action.payload;
@@ -77,7 +82,7 @@ const gameSlice = createSlice({
   }
 });
 
-export const { setSolutionPokemon, setGuess, resetGuesses, setGameProgress } =
+export const { setSolutionPokemon, setGuess, resetGame, setGameProgress } =
   gameSlice.actions;
 export * from './selectors';
 export default gameSlice.reducer;

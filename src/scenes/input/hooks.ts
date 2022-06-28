@@ -17,7 +17,6 @@ export const useSearch = () => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [searchResults, setSearchResults] = useState<Pokemon[]>([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
-  const [disableInput, setDisableInput] = useState(false);
   const dispatch = useAppDispatch();
   const gameState = useAppSelector(selectGameProgress);
   const { pokemon } = getPokedex();
@@ -53,10 +52,6 @@ export const useSearch = () => {
   }, []);
 
   useEffect(() => {
-    if (gameState === 'end') setDisableInput(true);
-  }, [gameState]);
-
-  useEffect(() => {
     const handleCloseSearch = (e: Event) => {
       // @ts-ignore - complain id doesn't exist, while technically true that's what I'm checking
       if (e.target.id !== 'pokemon-search-input') {
@@ -79,7 +74,7 @@ export const useSearch = () => {
     value: searchValue,
     searchResults,
     showSearchResults,
-    disableInput,
+    gameState,
     handleChange,
     handleSearchSelect,
     handleInputFocus

@@ -8,6 +8,7 @@ import PokemonMetrics from '../../../components/pokemon-metrics';
 import TypeChip from '../../../components/type-chips';
 import { useSolutionInfo } from '../hooks';
 import EndGameText from './end-game-text';
+import PlayAgainButton from './play-again-button';
 
 const StyledPokemonMetrics = styled(PokemonMetrics)`
   max-width: 300px;
@@ -53,6 +54,7 @@ const SolutionInfo = () => {
         pokemonName={solution.name}
         numberOfGuesses={numberOfGuesses}
       />
+      <PlayAgainButton />
       {/* TODO share button, stats? */}
     </>
   );
