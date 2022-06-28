@@ -3,11 +3,11 @@ import styled from '@emotion/styled';
 
 import { Flex, Heading, Text } from '@chakra-ui/react';
 
-import PokemonSprite from '../../components/pokemon-sprite';
-import PokemonMetrics from '../../components/pokemon-metrics';
-import TypeChip from '../../components/type-chips';
-import { getPlural } from '../../services/utils/string-utils';
-import { useSolutionInfo } from './hooks';
+import PokemonSprite from '../../../components/pokemon-sprite';
+import PokemonMetrics from '../../../components/pokemon-metrics';
+import TypeChip from '../../../components/type-chips';
+import { getPlural } from '../../../services/utils/string-utils';
+import { useSolutionInfo } from '../hooks';
 
 const StyledPokemonMetrics = styled(PokemonMetrics)`
   max-width: 300px;

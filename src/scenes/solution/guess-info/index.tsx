@@ -2,9 +2,9 @@ import { memo } from 'react';
 import { Flex } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
-import PokemonSprite from '../../components/pokemon-sprite';
-import PokemonMetrics from '../../components/pokemon-metrics';
-import { useSolutionGuessInfo } from './hooks';
+import PokemonSprite from '../../../components/pokemon-sprite';
+import PokemonMetrics from '../../../components/pokemon-metrics';
+import { useSolutionGuessInfo } from '../hooks';
 import Types from './types';
 
 const INITIAL_BLUR = 18;

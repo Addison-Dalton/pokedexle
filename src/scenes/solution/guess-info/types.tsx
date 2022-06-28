@@ -1,9 +1,9 @@
 import { FC, memo } from 'react';
 import styled from '@emotion/styled';
 import { Flex } from '@chakra-ui/react';
-import TypeChip from '../../components/type-chips';
-import { getTypeVariant } from '../../services/game/utils';
-import { getAllTypes } from '../../services/pokedex/utils';
+import TypeChip from '../../../components/type-chips';
+import { getTypeVariant } from '../../../services/game/utils';
+import { getAllTypes } from '../../../services/pokedex/utils';
 
 type Props = {
   solutionTypes: PokemonTypes[];
