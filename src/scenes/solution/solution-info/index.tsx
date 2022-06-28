@@ -1,13 +1,13 @@
 import { memo } from 'react';
 import styled from '@emotion/styled';
 
-import { Flex, Heading, Text } from '@chakra-ui/react';
+import { Flex, Heading } from '@chakra-ui/react';
 
 import PokemonSprite from '../../../components/pokemon-sprite';
 import PokemonMetrics from '../../../components/pokemon-metrics';
 import TypeChip from '../../../components/type-chips';
-import { getPlural } from '../../../services/utils/string-utils';
 import { useSolutionInfo } from '../hooks';
+import EndGameText from './end-game-text';
 
 const StyledPokemonMetrics = styled(PokemonMetrics)`
   max-width: 300px;
@@ -43,28 +43,16 @@ const SolutionInfo = () => {
           <StyledTypeChip key={`${type}-${idx}`} type={type} />
         ))}
       </Flex>
-      <StyledPokemonMetrics height={displayHeight} weight={displayWeight} gen={displayGen} />
-      {gameSolved ? (
-        <Text fontSize="lg" fontWeight="bold">
-          {'Nicely done! You guessed '}
-          <Text as="span" textTransform="capitalize" fontStyle="italic">
-            {solution.name}
-          </Text>
-          {` in ${numberOfGuesses} ${getPlural(
-            numberOfGuesses,
-            'guess',
-            'guesses'
-          )}.`}
-        </Text>
-      ) : (
-        <Text fontSize="lg" fontWeight="bold">
-          {"You didn't catch "}
-          <Text as="span" textTransform="capitalize" fontStyle="italic">
-            {solution.name}
-          </Text>
-          {'. Better luck next time!'}
-        </Text>
-      )}
+      <StyledPokemonMetrics
+        height={displayHeight}
+        weight={displayWeight}
+        gen={displayGen}
+      />
+      <EndGameText
+        gameSolved={gameSolved}
+        pokemonName={solution.name}
+        numberOfGuesses={numberOfGuesses}
+      />
       {/* TODO share button, stats? */}
     </>
   );
