@@ -1,4 +1,4 @@
-import { FC, useState, useMemo } from 'react';
+import { FC, useState } from 'react';
 import {
   Box,
   RangeSlider,
@@ -10,30 +10,31 @@ import {
 
 import { useAppSelector } from '../../../services/redux/hooks';
 import { selectSettings } from '../../../services/settings/selectors';
-import { convertToRomanNumeral } from '../../../services/pokedex/utils';
+import { convertToRomanNumeral, pokemonGenerations } from '../../../services/pokedex/utils';
 
 type Props = {
   htmlId: string;
   onGenerationChange: (generations: [number, number]) => void;
 };
 
-const defaultGenerations = [1, 9];
-
 export const GenerationSlider: FC<Props> = ({ htmlId, onGenerationChange }) => {
-  const { generations: stateGen } = useAppSelector((state) =>
-    selectSettings(state)
+  const { generations } = useAppSelector((state) => selectSettings(state));
+  const [displayGen, getDisplayGen] = useState<number[]>(
+    // asserting number[] for two reasons. First is RangeSlider expects
+    // a function with number[], and [number, number] is that. The
+    // second is by type, generations can be undefined. But if it is,
+    // the reducer will set it to a default value.
+    generations as number[]
   );
-  const generations = useMemo(() => stateGen || defaultGenerations, [stateGen]);
-  const [displayGen, getDisplayGen] = useState<number[]>(generations);
 
   return (
-    <Box paddingRight={1} paddingLeft={1}>
+    <Box marginTop={1} paddingRight={2} paddingLeft={2}>
       <RangeSlider
         id={htmlId}
         // eslint-disable-next-line jsx-a11y/aria-proptypes
         aria-label={['min', 'max']}
-        min={1}
-        max={9}
+        min={pokemonGenerations[0]}
+        max={pokemonGenerations[1]}
         step={1}
         value={displayGen}
         onChange={getDisplayGen}
@@ -42,14 +43,14 @@ export const GenerationSlider: FC<Props> = ({ htmlId, onGenerationChange }) => {
         <RangeSliderTrack>
           <RangeSliderFilledTrack />
         </RangeSliderTrack>
-        <RangeSliderThumb boxSize={4} index={0}>
+        <RangeSliderThumb boxSize={5} index={0}>
           <Box>
             <Text fontSize="xs" color="gray.600">
               {convertToRomanNumeral(displayGen[0])}
             </Text>
           </Box>
         </RangeSliderThumb>
-        <RangeSliderThumb boxSize={4} index={1}>
+        <RangeSliderThumb boxSize={5} index={1}>
           <Box>
             <Text fontSize="xs" color="gray.600">
               {convertToRomanNumeral(displayGen[1])}

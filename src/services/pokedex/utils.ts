@@ -33,6 +33,8 @@ export const getAllTypes = (): PokemonTypes[] => {
   ];
 };
 
+export const pokemonGenerations = [1, 8] as [number, number];
+
 export const getPokemonByGenerations = (generations?: [number, number]) => {
   if (!generations) return pokedex.pokemon as Pokemon[];
 
@@ -71,7 +73,18 @@ export const convertWeight = (weight: number) => {
 
 // only meant to be used with generation info, so keeping this pretty simple
 export const convertToRomanNumeral = (generation: number) => {
-  const numerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VII', 'IX', 'X'];
+  const numerals = [
+    'I',
+    'II',
+    'III',
+    'IV',
+    'V',
+    'VI',
+    'VII',
+    'VIII',
+    'IX',
+    'X'
+  ];
   if (generation > numerals.length) return generation.toString();
 
   // generation starts at 1, so minus by 1 to account for that

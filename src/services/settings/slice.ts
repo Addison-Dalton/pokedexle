@@ -1,12 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getLocalStorage, setLocalStorage } from '../../services/local-storage';
+import { getLocalStorage, setLocalStorage } from '../local-storage';
+import { pokemonGenerations } from '../pokedex/utils';
 
 type LocalStorageSettingsKeyValue = {
   [key in keyof LocalStorageSettings]: LocalStorageSettings[key];
 };
 
 const defaultState: Partial<SettingsStore> = {
-  generations: [1, 9]
+  generations: pokemonGenerations
 };
 
 const initialState: SettingsStore = {
