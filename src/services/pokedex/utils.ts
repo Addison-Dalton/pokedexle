@@ -33,11 +33,21 @@ export const getAllTypes = (): PokemonTypes[] => {
   ];
 };
 
+export const getPokemonByGenerations = (generations?: [number, number]) => {
+  if (!generations) return pokedex.pokemon as Pokemon[];
+
+  const [min, max] = generations;
+
+  return pokedex.pokemon.filter(
+    ({ generation }) => generation >= min && generation <= max
+  ) as Pokemon[];
+};
+
 // for now, calls the pokedex to get the number of pokemon
-export const getRandomPokemon = () => {
-  const { pokemon } = pokedex as Pokedex;
-  const randomId = randomIntFromInterval(1, pokemon.length);
-  return getPokemon(randomId);
+export const getRandomPokemon = (generations?: [number, number]) => {
+  const filteredPokemon = getPokemonByGenerations(generations);
+  const randomIndex = randomIntFromInterval(1, filteredPokemon.length);
+  return filteredPokemon[randomIndex];
 };
 
 // converts height from decimetres to ft/in

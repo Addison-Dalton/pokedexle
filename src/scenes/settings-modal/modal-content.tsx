@@ -10,8 +10,13 @@ import { useSettingModal } from './hooks';
 import { SettingContainers, GenerationSlider } from './components';
 
 const ModalContent = () => {
-  const { colorMode, hardMode, toggleColorMode, toggleHardMode } =
-    useSettingModal();
+  const {
+    colorMode,
+    hardMode,
+    toggleColorMode,
+    toggleHardMode,
+    handleGenerationChange
+  } = useSettingModal();
   return (
     <ModalBody>
       <FormControl as={VStack} alignItems="start">
@@ -22,7 +27,7 @@ const ModalContent = () => {
           htmlFor="slider-root-generationSlider" // 'slider-root' set by chakra-ui
           flexDirection="column"
         >
-          <GenerationSlider htmlId="generationSlider" />
+          <GenerationSlider htmlId="generationSlider" onGenerationChange={handleGenerationChange} />
         </SettingContainers>
         <Divider />
         {/* HARD MODE */}

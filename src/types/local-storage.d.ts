@@ -3,6 +3,7 @@ type LocalStorageOptions = LocalStorageSettings & LocalStorageGame;
 
 type LocalStorageSettings = {
   hardMode?: boolean;
+  generations?: [number, number];
 };
 
 type LocalStorageGame = {

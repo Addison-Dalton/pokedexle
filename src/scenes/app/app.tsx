@@ -1,20 +1,18 @@
 import { useEffect } from 'react';
 import { Flex } from '@chakra-ui/react';
 
-import { setSolutionPokemon } from '../../services/game/slice';
-import { useAppDispatch } from '../../services/redux/hooks';
-import { getRandomPokemon } from '../../services/pokedex/utils';
+import { useGame } from '../../services/game/hooks';
 
 import Navbar from '../navbar';
 import Solution from '../solution';
 import GameInput from '../input';
 
 const App = () => {
-  const dispatch = useAppDispatch();
+  const { setGame } = useGame();
 
   useEffect(() => {
-    dispatch(setSolutionPokemon(getRandomPokemon()));
-  }, [dispatch]);
+    setGame()
+  }, [setGame]);
 
   return (
     <Flex minHeight="100%" height="100%" alignItems="center" flexDirection="column">

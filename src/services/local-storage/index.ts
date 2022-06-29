@@ -2,10 +2,10 @@ export const setLocalStorage = (key: keyof LocalStorageOptions, value: LocalStor
     localStorage.setItem(key, JSON.stringify(value));
 };
 
-export const getLocalStorage = (key: keyof LocalStorageOptions) => {
+export const getLocalStorage = <T>(key: keyof LocalStorageOptions) => {
   const localStorageValue = localStorage.getItem(key);
   if (!localStorageValue) return undefined;
-  return JSON.parse(localStorageValue) as LocalStorageOptions[typeof key];
+  return JSON.parse(localStorageValue) as T | undefined;
 };
 
 export const resetLocaStorage = () => {

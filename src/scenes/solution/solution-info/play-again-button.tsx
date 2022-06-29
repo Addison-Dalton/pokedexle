@@ -1,18 +1,12 @@
-import { useCallback } from 'react';
 import { Button } from '@chakra-ui/react';
 import { RepeatIcon } from '@chakra-ui/icons';
-import { useAppDispatch } from '../../../services/redux/hooks';
-import { resetGame } from '../../../services/game/slice';
+import { useGame } from '../../../services/game/hooks';
 
 const PlayAgainButton = () => {
-  const dispatch = useAppDispatch();
-
-  const handleClick = useCallback(() => {
-    dispatch(resetGame());
-  }, [dispatch]);
+  const { setGame } = useGame();
 
   return (
-    <Button marginTop={4} leftIcon={<RepeatIcon />} onClick={handleClick}>
+    <Button marginTop={4} leftIcon={<RepeatIcon />} onClick={setGame}>
       {'Play again?'}
     </Button>
   );

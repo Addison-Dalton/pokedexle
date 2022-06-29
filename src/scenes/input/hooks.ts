@@ -10,8 +10,8 @@ import Fuse from 'fuse.js';
 
 import { useAppDispatch, useAppSelector } from '../../services/redux/hooks';
 import { setGuess, selectGameProgress } from '../../services/game/slice';
-import { getSetting } from '../../services/settings/slice';
-import { getPokedex } from '../../services/pokedex/utils';
+import { selectSettings } from '../../services/settings/slice';
+import { getPokemonByGenerations  } from '../../services/pokedex/utils';
 
 export const useSearch = () => {
   const [searchValue, setSearchValue] = useState<string>('');
@@ -19,7 +19,8 @@ export const useSearch = () => {
   const [showSearchResults, setShowSearchResults] = useState(false);
   const dispatch = useAppDispatch();
   const gameState = useAppSelector(selectGameProgress);
-  const { pokemon } = getPokedex();
+  const { generations } = useAppSelector((state) => selectSettings(state));
+  const pokemon = getPokemonByGenerations(generations);
   const fuse = useMemo(
     () => new Fuse(pokemon, { keys: ['name', 'types'], threshold: 0.3 }),
     [pokemon]
@@ -82,7 +83,7 @@ export const useSearch = () => {
 };
 
 export const useSearchListItem = () => {
-  const hardMode = useAppSelector((state) => getSetting(state, 'hardMode'));
+  const { hardMode } = useAppSelector((state) => selectSettings(state));
 
   return { hardMode };
 };

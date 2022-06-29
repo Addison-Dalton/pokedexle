@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, useMemo } from 'react';
 import {
   Box,
   RangeSlider,
@@ -8,16 +8,23 @@ import {
   Text
 } from '@chakra-ui/react';
 
+import { useAppSelector } from '../../../services/redux/hooks';
+import { selectSettings } from '../../../services/settings/selectors';
 import { convertToRomanNumeral } from '../../../services/pokedex/utils';
 
 type Props = {
   htmlId: string;
+  onGenerationChange: (generations: [number, number]) => void;
 };
 
-const defaultGeneration = [1, 9];
+const defaultGenerations = [1, 9];
 
-export const GenerationSlider: FC<Props> = ({ htmlId }) => {
-  const [generations, setGenerations] = useState<number[]>(defaultGeneration);
+export const GenerationSlider: FC<Props> = ({ htmlId, onGenerationChange }) => {
+  const { generations: stateGen } = useAppSelector((state) =>
+    selectSettings(state)
+  );
+  const generations = useMemo(() => stateGen || defaultGenerations, [stateGen]);
+  const [displayGen, getDisplayGen] = useState<number[]>(generations);
 
   return (
     <Box paddingRight={1} paddingLeft={1}>
@@ -28,8 +35,9 @@ export const GenerationSlider: FC<Props> = ({ htmlId }) => {
         min={1}
         max={9}
         step={1}
-        defaultValue={[1, 9]}
-        onChange={setGenerations}
+        value={displayGen}
+        onChange={getDisplayGen}
+        onChangeEnd={onGenerationChange}
       >
         <RangeSliderTrack>
           <RangeSliderFilledTrack />
@@ -37,14 +45,14 @@ export const GenerationSlider: FC<Props> = ({ htmlId }) => {
         <RangeSliderThumb boxSize={4} index={0}>
           <Box>
             <Text fontSize="xs" color="gray.600">
-              {convertToRomanNumeral(generations[0])}
+              {convertToRomanNumeral(displayGen[0])}
             </Text>
           </Box>
         </RangeSliderThumb>
         <RangeSliderThumb boxSize={4} index={1}>
           <Box>
             <Text fontSize="xs" color="gray.600">
-              {convertToRomanNumeral(generations[1])}
+              {convertToRomanNumeral(displayGen[1])}
             </Text>
           </Box>
         </RangeSliderThumb>
