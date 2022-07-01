@@ -1,46 +1,31 @@
-# Getting Started with Create React App
+# Pokédexle
+A Pokémon guessing game inspired by [Wordle](https://www.nytimes.com/games/wordle/index.html), [Heardle](https://www.heardle.app/), and similar games.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The objective of the game is to guess the correct Pokémon in six guesses. The Pokémon's image will start blurry, but become clearer as you guess. Additionally, the Pokémon's weight, height, type, and generation info will narrow to help in your search.
 
-## Available Scripts
+In the game's current state, it does not have a "daily" mode. You can play endlessly! (*I do hope to eventually add a daily game mode*).
 
-In the project directory, you can run:
+The game can be played at [https://addison-dalton.github.io/pokedexle/](https://addison-dalton.github.io/pokedexle/), or by running the game locally with the following commands:
 
-### `yarn start`
+1. Clone this repo.
+2. Inside your local copy, run `yarn install` to install the dependencies.
+3. Run `yarn start` to start the application.
+4. It should be available at [http://localhost:3000](http://localhost:3000)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Tech Stuff
+Pokédexle is a React app written in TypeScript. It heavily uses [Chakra UI](https://chakra-ui.com/) as its component library; with [Emotion](https://emotion.sh) being used to style components. [Redux Toolkit](https://redux-toolkit.js.org/) is used for global state management.
 
-### `yarn test`
+All Pokémon data is sourced from an internal JSON file. This file was constructed from various API calls to [PokeAPI](https://pokeapi.co/). The Pokémon images are fetched as needed, and are sourced from PokeAPI's [GitHub](https://github.com/PokeAPI/sprites) for sprites.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Finally, searching for Pokémon is accomplished with help from [Fuse.js](https://fusejs.io/).
 
-### `yarn build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Motivation - *for those that care*
+As with many, I got caught up in the Wordle craze early in 2022. At the same time, I was playing Pokémon Arceus. The idea hit me that Pokémon could be a perfect adaptation.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+I used development on this game as an opportunity to explore Chakra UI, which I really enjoyed.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
