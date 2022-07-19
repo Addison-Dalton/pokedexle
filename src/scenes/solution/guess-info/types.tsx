@@ -11,15 +11,13 @@ type Props = {
 };
 
 const StyledTypeChip = styled(TypeChip)`
-  margin: 0.3rem !important;
-  width: 4rem;
   font-size: 0.8em;
 `;
 
 const Types: FC<Props> = ({ guessedTypes, solutionTypes }) => {
   const allTypes = getAllTypes();
   return (
-    <Flex flexWrap="wrap" justifyContent="center" marginBottom={6}>
+    <Flex flexWrap="wrap" justifyContent="center" gap="0.5rem" marginBottom={6}>
       {allTypes.map((type, idx) => (
         <StyledTypeChip
           key={`${type}-${idx}`}

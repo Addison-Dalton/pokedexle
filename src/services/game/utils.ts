@@ -81,5 +81,5 @@ export const getTypeVariant = (
     }
     return 'eliminated';
   }
-  return 'standard';
+  return 'unguessed';
 };

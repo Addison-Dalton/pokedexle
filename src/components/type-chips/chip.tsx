@@ -1,4 +1,5 @@
 import { FC, memo } from 'react';
+import { Box } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import BaseChip from './base';
 
@@ -8,30 +9,47 @@ type Props = {
   className?: string;
 };
 
-const EliminatedChip = styled(BaseChip)`
-  background-color: gray;
-  border-color: darkgray;
-  opacity: 0.5;
-  text-decoration: line-through;
-  box-shadow: 0px 0px 2px 3px #ff1100;
+const StyledChip = styled(BaseChip)`
+  &.solution {
+    border-color: white;
+    box-shadow: 0px 0px 6px 3px #000000b5;
+  }
+
+  &.eliminated {
+    opacity: 0.3;
+  }
+
+  &.unguessed {
+    opacity: 0.8;
+  }
 `;
 
-const SolutionChip = styled(BaseChip)`
-  box-shadow: 0px 0px 2px 3px #3de129;
-`
+const CrossOutOverlay = styled('div')`
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  border-radius: 12px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><path d='M100 0 L0 100 ' stroke='darkgray' stroke-width='5'/><path d='M0 0 L100 100 ' stroke='darkgray' stroke-width='5'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 100%, auto;
+  transition: opacity 0.3s ease-in;
 
-const Chip: FC<Props> = ({ type, variant = 'standard', className }) => {
-  switch (variant) {
-    case 'standard':
-      return <BaseChip type={type} className={className} />
-    case 'eliminated':
-      return <EliminatedChip type={type} className={className} />
-    case 'solution':
-      return <SolutionChip type={type} className={className} />
-    default:
-      return <BaseChip type={type} className={className} />
+  &.eliminated {
+    opacity: 1;
   }
-};
+`;
+
+const Chip: FC<Props> = ({ type, variant = 'standard', className }) => (
+  <Box position="relative">
+    <CrossOutOverlay className={variant} />
+    <StyledChip type={type} className={`${variant} ${className}`} />
+  </Box>
+);
 
 const MemoizedChip = memo(Chip);
 

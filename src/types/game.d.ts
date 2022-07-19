@@ -10,7 +10,7 @@ type PokemonRange = {
   max: number;
 };
 
-type TypeChipVariants = 'standard' | 'eliminated' | 'solution';
+type TypeChipVariants = 'standard' | 'unguessed' | 'eliminated' | 'solution';
 type GameProgress = 'intro' | 'game' | 'end';
 
 type Guesses = {

@@ -18,7 +18,7 @@ const GameInput = () => {
   if (gameState === 'end') return null;
 
   return (
-    <Box margin="0 auto" marginBottom={4} minWidth={[340, 450]} paddingTop={5}>
+    <Box margin="0 auto" marginBottom={4} minWidth={[340, 450]} paddingTop={5} zIndex={5}>
       <Box position="relative">
         <InputGroup>
           <Input

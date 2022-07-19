@@ -11,10 +11,10 @@ const Chip: FC<Props> = ({ type, className }) => (
     className={className}
     borderRadius="20px"
     backgroundColor={type}
-    border={`1px solid`}
+    border={`2px solid`}
     borderColor={`${type}Border`}
-    boxShadow="0px 0px 4px 1px #000000b5;"
-    width={20}
+    width="4rem"
+    transition="all .3s ease-in-out"
   >
     <Text textAlign="center" textTransform="capitalize" color="white">
       {type}

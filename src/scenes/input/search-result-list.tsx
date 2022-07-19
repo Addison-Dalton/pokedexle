@@ -38,7 +38,7 @@ const SearchResultList: FC<Props> = ({
   if (!showResults) return null;
 
   return (
-    <Wrapper maxHeight={window.innerHeight - 100}>
+    <Wrapper maxHeight={window.innerHeight - 100} zIndex={5}>
       <Box overflowY="auto" width="100%">
         <UnorderedList
           id="pokemon-search-results"

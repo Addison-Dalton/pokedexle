@@ -30,8 +30,7 @@ const listItemDarkStyles: CSSObject = {
 };
 
 const StyledTypeChip = styled(TypeChip)`
-  margin: 0.3rem !important;
-  width: 4rem;
+  width: 3.75rem;
   font-size: 0.7em;
 `;
 

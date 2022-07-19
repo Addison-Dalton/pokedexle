@@ -15,9 +15,8 @@ const StylePokemonSprite = styled(PokemonSprite)`
 `;
 
 const StyledTypeChip = styled(TypeChip)`
-  margin: 0.2rem !important;
   width: 3.5rem;
-  font-size: 0.7em;
+  font-size: 0.8em;
 `;
 
 const TooltipContent: FC<Props> = ({ guessedPokemon }) => {
@@ -28,7 +27,7 @@ const TooltipContent: FC<Props> = ({ guessedPokemon }) => {
         <Heading size="sm" textTransform="capitalize" marginLeft="0.2rem">
           {guessedPokemon.name}
         </Heading>
-        <Flex justifyContent="center">
+        <Flex justifyContent="center" margin="0.2rem" gap={1}>
           {guessedPokemon.types.map((type, idx) => (
             <StyledTypeChip key={`${type}-${idx}`} type={type} />
           ))}
