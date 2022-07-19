@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/pokedexle/static/css/main.becd3e38.css",
-    "main.js": "/pokedexle/static/js/main.9d1b9709.js",
-    "static/js/787.67ee6f23.chunk.js": "/pokedexle/static/js/787.67ee6f23.chunk.js",
-    "static/media/pokeball.svg": "/pokedexle/static/media/pokeball.51715f94ec10516eb9b5465571f6029a.svg",
-    "index.html": "/pokedexle/index.html",
-    "main.becd3e38.css.map": "/pokedexle/static/css/main.becd3e38.css.map",
-    "main.9d1b9709.js.map": "/pokedexle/static/js/main.9d1b9709.js.map",
-    "787.67ee6f23.chunk.js.map": "/pokedexle/static/js/787.67ee6f23.chunk.js.map"
+    "main.css": "/static/css/main.becd3e38.css",
+    "main.js": "/static/js/main.ae643f7b.js",
+    "static/js/787.67ee6f23.chunk.js": "/static/js/787.67ee6f23.chunk.js",
+    "static/media/pokeball.svg": "/static/media/pokeball.51715f94ec10516eb9b5465571f6029a.svg",
+    "index.html": "/index.html",
+    "main.becd3e38.css.map": "/static/css/main.becd3e38.css.map",
+    "main.ae643f7b.js.map": "/static/js/main.ae643f7b.js.map",
+    "787.67ee6f23.chunk.js.map": "/static/js/787.67ee6f23.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.becd3e38.css",
-    "static/js/main.9d1b9709.js"
+    "static/js/main.ae643f7b.js"
   ]
 }
