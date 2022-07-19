@@ -1,9 +1,12 @@
 import { FC, memo } from 'react';
 import styled from '@emotion/styled';
 import { Flex } from '@chakra-ui/react';
-import TypeChip from '../../../components/type-chips';
+
+import { useAppSelector } from '../../../services/redux/hooks';
+import { selectSettings } from '../../../services/settings/slice';
 import { getTypeVariant } from '../../../services/game/utils';
 import { getAllTypes } from '../../../services/pokedex/utils';
+import TypeChip from '../../../components/type-chips';
 
 type Props = {
   solutionTypes: PokemonTypes[];
@@ -15,7 +18,8 @@ const StyledTypeChip = styled(TypeChip)`
 `;
 
 const Types: FC<Props> = ({ guessedTypes, solutionTypes }) => {
-  const allTypes = getAllTypes();
+  const { generations } = useAppSelector((state) => selectSettings(state));
+  const allTypes = getAllTypes(generations);
   return (
     <Flex flexWrap="wrap" justifyContent="center" gap="0.5rem" marginBottom={6}>
       {allTypes.map((type, idx) => (

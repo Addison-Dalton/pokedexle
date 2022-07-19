@@ -10,8 +10,8 @@ export const getPokedex = () => {
   return pokedex as Pokedex;
 };
 
-export const getAllTypes = (): PokemonTypes[] => {
-  return [
+export const getAllTypes = (generations?: [number, number]): PokemonTypes[] => {
+  const alltypes: PokemonTypes[] = [
     'normal',
     'fire',
     'water',
@@ -31,6 +31,17 @@ export const getAllTypes = (): PokemonTypes[] => {
     'steel',
     'fairy'
   ];
+
+  if (!generations) return alltypes;
+
+  // filter out types not available under certain gens
+  return alltypes.filter((type) => {
+    const [, maxGen] = generations;
+    if (maxGen < 2 && type === 'dark') {
+      return false;
+    }
+    return true;
+  });
 };
 
 export const pokemonGenerations = [1, 8] as [number, number];
