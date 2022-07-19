@@ -68,8 +68,11 @@ const gameSlice = createSlice({
         state.gameSolved = true;
       }
     },
-    resetGameState() {
-        return {...initialState };
+    resetGameState(state) {
+      return {
+        ...initialState,
+        gameProgress: 'game'
+      };
     },
     setGameProgress(state, action: PayloadAction<GameProgress>) {
       state.gameProgress = action.payload;
