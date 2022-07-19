@@ -43,15 +43,14 @@ const ModalContent = () => {
             onChange={toggleHardMode}
           />
         </SettingContainers>
-        <Divider />
-        {/* DARK THEME */}
-        <SettingContainers label="Dark theme" htmlFor="darkTheme">
+        {/* DARK THEME - Removed for now. App defaults to dark theme. Might give light them for thought later. */}
+        {/* <SettingContainers label="Dark theme" htmlFor="darkTheme">
           <Switch
             id="darktheme"
             isChecked={colorMode === 'dark'}
             onChange={toggleColorMode}
           />
-        </SettingContainers>
+        </SettingContainers> */}
       </FormControl>
     </ModalBody>
   );
