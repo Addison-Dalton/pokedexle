@@ -25,7 +25,7 @@ const AboutModal = () => {
         <ModalContent>
           <ModalHeader textAlign="center">{'ABOUT'}</ModalHeader>
           <ModalCloseButton />
-          <ModalBody paddingBottom={6}>
+          <ModalBody paddingBottom={5}>
             <Text>
               {'Pokédexle is a Pokémon guessing game, inspired by '}
               <Link

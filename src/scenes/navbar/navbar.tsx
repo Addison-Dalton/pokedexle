@@ -1,8 +1,9 @@
 import { Box, Flex, HStack, Heading } from '@chakra-ui/react';
 
-import Settings from '../../components/modals/settings-modal';
 import IntroModal from '../../components/modals/intro-modal';
 import AboutModal from '../../components/modals/about-modal';
+import StatsModal from '../../components/modals/stats-modal';
+import SettingsModal from '../../components/modals/settings-modal';
 
 const Navbar = () => {
   return (
@@ -21,8 +22,9 @@ const Navbar = () => {
         >
           {'Pokédexle'}
         </Heading>
-        <HStack flex="1 1 0%" spacing={10} justifyContent="flex-end">
-          <Settings />
+        <HStack flex="1 1 0%" spacing={3} justifyContent="flex-end">
+          <StatsModal />
+          <SettingsModal />
         </HStack>
       </Flex>
     </Box>
