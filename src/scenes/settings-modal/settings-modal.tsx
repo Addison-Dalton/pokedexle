@@ -19,7 +19,7 @@ const SettingsModal = () => {
       <IconButton aria-label="settings" onClick={onOpen}>
         <SettingsIcon />
       </IconButton>
-      <Modal onClose={onClose} size={'sm'} isOpen={isOpen}>
+      <Modal onClose={onClose} size="sm" isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent paddingBottom={5} marginLeft={2} marginRight={2}>
           <ModalHeader textAlign="center">{'SETTINGS'}</ModalHeader>
