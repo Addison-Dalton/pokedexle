@@ -1,5 +1,5 @@
 # Pokédexle
-A Pokémon guessing game inspired by [Wordle](https://www.nytimes.com/games/wordle/index.html), [Heardle](https://www.heardle.app/), and similar games.
+A Pokémon guessing game inspired by [Wordle](https://www.nytimes.com/games/wordle/index.html), [Heardle](https://www.spotify.com/heardle/), and similar games.
 
 The objective of the game is to guess the correct Pokémon in six guesses. The Pokémon's image will start blurry, but become clearer as you guess. Additionally, the Pokémon's weight, height, type, and generation info will narrow to help in your search.
 
