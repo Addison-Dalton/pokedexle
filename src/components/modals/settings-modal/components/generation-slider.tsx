@@ -8,9 +8,9 @@ import {
   Text
 } from '@chakra-ui/react';
 
-import { useAppSelector } from '../../../services/redux/hooks';
-import { selectSettings } from '../../../services/settings/selectors';
-import { convertToRomanNumeral, pokemonGenerations } from '../../../services/pokedex/utils';
+import { useAppSelector } from '../../../../services/redux/hooks';
+import { selectSettings } from '../../../../services/settings/selectors';
+import { convertToRomanNumeral, pokemonGenerations } from '../../../../services/pokedex/utils';
 
 type Props = {
   htmlId: string;

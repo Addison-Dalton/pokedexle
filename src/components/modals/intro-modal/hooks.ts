@@ -1,9 +1,9 @@
 import { useCallback, useEffect } from 'react';
 import { useDisclosure } from '@chakra-ui/react';
 
-import { useAppSelector, useAppDispatch } from '../../services/redux/hooks';
-import { selectGameProgress, setGameProgress } from '../../services/game/slice';
-import { setLocalStorage } from '../../services/local-storage';
+import { useAppSelector, useAppDispatch } from '../../../services/redux/hooks';
+import { selectGameProgress, setGameProgress } from '../../../services/game/slice';
+import { setLocalStorage } from '../../../services/local-storage';
 
 export const useIntroModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

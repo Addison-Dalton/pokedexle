@@ -3,7 +3,7 @@ import { Box } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 
-import { ReactComponent as PokeballIcon } from '../../icons/pokeball.svg';
+import { ReactComponent as PokeballIcon } from '../../../icons/pokeball.svg';
 
 // play button size
 const PLAY_BUTTON_WIDTH = 100;

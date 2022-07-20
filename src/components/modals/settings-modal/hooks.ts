@@ -5,7 +5,7 @@ import { useColorMode } from '@chakra-ui/react';
 import {
   selectSettings,
   setLocalStorageSettings
-} from '../../services/settings/slice';
+} from '../../../services/settings/slice';
 
 export const useSettingModal = () => {
   const dispatch = useDispatch();

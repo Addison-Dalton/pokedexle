@@ -1,8 +1,8 @@
 import { Box, Flex, HStack, Heading } from '@chakra-ui/react';
 
-import Settings from '../settings-modal';
-import IntroModal from '../intro-modal';
-import AboutModal from '../about-modal/';
+import Settings from '../../components/modals/settings-modal';
+import IntroModal from '../../components/modals/intro-modal';
+import AboutModal from '../../components/modals/about-modal';
 
 const Navbar = () => {
   return (

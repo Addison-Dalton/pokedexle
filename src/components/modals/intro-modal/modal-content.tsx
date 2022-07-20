@@ -9,8 +9,8 @@ import {
   ListItem
 } from '@chakra-ui/react';
 
-import { getPokemon } from '../../services/pokedex/utils';
-import PokeballGuess from '../../components/pokeball-guess';
+import { getPokemon } from '../../../services/pokedex/utils';
+import PokeballGuess from '../../pokeball-guess';
 import PlayButton from './play-button';
 
 type Props = {
